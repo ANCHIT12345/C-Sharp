@@ -1,0 +1,13 @@
+﻿using System;
+namespace test
+{
+    internal class Program 
+    {
+        static void Main(string[] args)
+        {
+            int a = Convert.ToInt32(Console.ReadLine());
+            int x = 0;
+            for (int i = 0; i <= a; i++)
+        }
+    }
+}

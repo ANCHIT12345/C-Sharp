@@ -1,0 +1,14 @@
+C:\Users\Anchit\github\Console app\Consoleapp_1\bin\Debug\net8.0\Consoleapp_1.exe
+C:\Users\Anchit\github\Console app\Consoleapp_1\bin\Debug\net8.0\Consoleapp_1.deps.json
+C:\Users\Anchit\github\Console app\Consoleapp_1\bin\Debug\net8.0\Consoleapp_1.runtimeconfig.json
+C:\Users\Anchit\github\Console app\Consoleapp_1\bin\Debug\net8.0\Consoleapp_1.dll
+C:\Users\Anchit\github\Console app\Consoleapp_1\bin\Debug\net8.0\Consoleapp_1.pdb
+C:\Users\Anchit\github\Console app\Consoleapp_1\obj\Debug\net8.0\Consoleapp_1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Anchit\github\Console app\Consoleapp_1\obj\Debug\net8.0\Consoleapp_1.AssemblyInfoInputs.cache
+C:\Users\Anchit\github\Console app\Consoleapp_1\obj\Debug\net8.0\Consoleapp_1.AssemblyInfo.cs
+C:\Users\Anchit\github\Console app\Consoleapp_1\obj\Debug\net8.0\Consoleapp_1.csproj.CoreCompileInputs.cache
+C:\Users\Anchit\github\Console app\Consoleapp_1\obj\Debug\net8.0\Consoleapp_1.dll
+C:\Users\Anchit\github\Console app\Consoleapp_1\obj\Debug\net8.0\refint\Consoleapp_1.dll
+C:\Users\Anchit\github\Console app\Consoleapp_1\obj\Debug\net8.0\Consoleapp_1.pdb
+C:\Users\Anchit\github\Console app\Consoleapp_1\obj\Debug\net8.0\Consoleapp_1.genruntimeconfig.cache
+C:\Users\Anchit\github\Console app\Consoleapp_1\obj\Debug\net8.0\ref\Consoleapp_1.dll
