@@ -1,0 +1,33 @@
+using System;
+namespace MyApp1
+{
+  class Program1
+  {
+        public static void Run()
+        {
+            Console.WriteLine("Enter the name of the Book:");
+            string bookName = Console.ReadLine();
+            Console.WriteLine("Enter the price of the Book:");
+            if (!decimal.TryParse(Console.ReadLine(), out decimal bookPrice))
+            {
+                Console.WriteLine("Invalid input for price.");
+                return;
+            }
+            Console.WriteLine("Enter the Number of copies available:");
+            if (!int.TryParse(Console.ReadLine(), out int numberOfCopies))
+            {
+                Console.WriteLine("Invalid input for number of copies.");
+                return;
+            }
+            bool Available;
+            if(numberOfCopies > 0)
+                Available = true;
+            else
+                Available = false;
+            Console.WriteLine("Book Details:");
+            Console.WriteLine("Name: " + bookName);
+            Console.WriteLine("Price: $" + bookPrice);
+            Console.WriteLine("Available: " + (Available ? "Yes" : "No"));
+        }
+  }
+}

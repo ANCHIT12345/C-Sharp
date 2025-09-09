@@ -1,0 +1,12 @@
+﻿using System;
+namespace test
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // Delegate to Program2.Run in MyApp namespace to run the second example
+            MyApp.Program2.Run();
+        }
+    }
+}

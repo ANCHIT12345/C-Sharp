@@ -1,0 +1,26 @@
+﻿using System;
+namespace test
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter Book Name:");
+            string Book_Name = Console.ReadLine();
+            Console.WriteLine("Enter Book Price:");
+            double Book_Price = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Number of copies:");
+            int Number_of_copies = Convert.ToInt32(Console.ReadLine());
+            bool Book_Available;
+            if (Number_of_copies >= 1) 
+                Book_Available = true;
+            else 
+                Book_Available = false;
+            Console.WriteLine("Book Name: " + Book_Name);
+            Console.WriteLine("Book Price: " + Book_Price);
+            Console.WriteLine("Number of copies: " + Number_of_copies);
+            Console.WriteLine("Book Available: " + Book_Available);
+            Console.ReadKey();
+        }
+    }
+}
