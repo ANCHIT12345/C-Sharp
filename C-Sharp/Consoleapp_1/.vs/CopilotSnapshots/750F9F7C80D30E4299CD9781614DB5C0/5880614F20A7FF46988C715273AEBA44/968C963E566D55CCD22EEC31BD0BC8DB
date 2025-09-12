@@ -1,0 +1,13 @@
+﻿using System;
+namespace MyApp4 {
+    class Program4 {
+        static void Run() { 
+            var Book_ID_Var = 101;
+            Console.WriteLine($"Book_ID for var check {int}:{Book_ID_Var}");
+            dynamic Book_Id_dynamic = 101;
+            Console.WriteLine($"Book_ID for Int dynamic check {int}:{Book_Id_dynamic}");
+            Book_Id_dynamic = 'B101';
+            Console.WriteLine($"Book_ID for String dynamic check {string}:{Book_Id_dynamic}");
+        }
+    }
+}
