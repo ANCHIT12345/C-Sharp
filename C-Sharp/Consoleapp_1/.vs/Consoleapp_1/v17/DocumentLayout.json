@@ -1,54 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\Consoleapp_1\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{D895372F-580D-42E6-9CB5-06B63D9CED7F}|Consoleapp_1.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\consoleapp_1\\program11.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D895372F-580D-42E6-9CB5-06B63D9CED7F}|Consoleapp_1.csproj|solutionrelative:program11.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D895372F-580D-42E6-9CB5-06B63D9CED7F}|Consoleapp_1.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\consoleapp_1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D895372F-580D-42E6-9CB5-06B63D9CED7F}|Consoleapp_1.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program11.cs",
-              "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\Consoleapp_1\\Program11.cs",
-              "RelativeDocumentMoniker": "Program11.cs",
-              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\Consoleapp_1\\Program11.cs",
-              "RelativeToolTip": "Program11.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-12T17:17:20.987Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\Consoleapp_1\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\Consoleapp_1\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-11T10:57:08.466Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }
