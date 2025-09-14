@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\ConsoleApp2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E0C025D1-4CA2-43E8-9B6C-A743B8BE761B}|ConsoleApp2.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\consoleapp2\\assignment04_product stock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E0C025D1-4CA2-43E8-9B6C-A743B8BE761B}|ConsoleApp2.csproj|solutionrelative:assignment04_product stock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E0C025D1-4CA2-43E8-9B6C-A743B8BE761B}|ConsoleApp2.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\consoleapp2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E0C025D1-4CA2-43E8-9B6C-A743B8BE761B}|ConsoleApp2.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E0C025D1-4CA2-43E8-9B6C-A743B8BE761B}|ConsoleApp2.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\consoleapp2\\assignment11_greetingmethod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E0C025D1-4CA2-43E8-9B6C-A743B8BE761B}|ConsoleApp2.csproj|solutionrelative:assignment11_greetingmethod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,30 +18,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Assignment04_Product Stock.cs",
-              "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\ConsoleApp2\\Assignment04_Product Stock.cs",
-              "RelativeDocumentMoniker": "Assignment04_Product Stock.cs",
-              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\ConsoleApp2\\Assignment04_Product Stock.cs*",
-              "RelativeToolTip": "Assignment04_Product Stock.cs*",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAwwBYAAAANAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Assignment11_GreetingMethod.cs",
+              "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\ConsoleApp2\\Assignment11_GreetingMethod.cs",
+              "RelativeDocumentMoniker": "Assignment11_GreetingMethod.cs",
+              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\ConsoleApp2\\Assignment11_GreetingMethod.cs",
+              "RelativeToolTip": "Assignment11_GreetingMethod.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-13T04:43:49.002Z",
+              "WhenOpened": "2025-09-14T03:56:23.496Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\ConsoleApp2\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\ConsoleApp2\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA0AAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\ConsoleApp2\\Program.cs*",
+              "RelativeToolTip": "Program.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-13T04:22:44.006Z",
               "EditorCaption": ""
