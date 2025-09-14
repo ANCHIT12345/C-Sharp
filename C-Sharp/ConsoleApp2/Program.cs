@@ -18,7 +18,15 @@ namespace MyRunner {
 
             //B. Methods (10 Assignments)
 
-            MyApp11.Assignment11_GreetingMethod.Run();
+            //MyApp11.Assignment11_GreetingMethod.Run();
+            //MyApp12.Assignment12_SumofTwoNumbers.Run();FileName
+            //MyApp13.Assignment13_PassbyValue.Run();
+            //MyApp14.Assignment14_PassbyReferencereferr.Run();
+            //MyApp15.Assignment15_PassbyReferenceout.Run();
+            //MyApp16.Assignment16_MethodOverloading.Run();
+            //MyApp17.Assignment17_RecursionFactorial.Run();
+            //MyApp18.Assignment18_RecursionFibonacci.Run();
+            MyApp19.Assignment19_RecursiveSumofDigits.Run();
         }
     }
 }
