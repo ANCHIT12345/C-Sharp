@@ -26,7 +26,8 @@ namespace MyRunner {
             //MyApp16.Assignment16_MethodOverloading.Run();
             //MyApp17.Assignment17_RecursionFactorial.Run();
             //MyApp18.Assignment18_RecursionFibonacci.Run();
-            MyApp19.Assignment19_RecursiveSumofDigits.Run();
+            //MyApp19.Assignment19_RecursiveSumofDigits.Run();
+            MyApp20.Assignment20_MiniMenuwithMethods.Run();
         }
     }
 }
