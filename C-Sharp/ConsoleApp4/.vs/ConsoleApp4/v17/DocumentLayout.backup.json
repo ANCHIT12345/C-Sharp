@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\ConsoleApp4\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{15FDD307-E838-4D74-A6EA-746F6E7A69FE}|ConsoleApp4.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\consoleapp4\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15FDD307-E838-4D74-A6EA-746F6E7A69FE}|ConsoleApp4.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15FDD307-E838-4D74-A6EA-746F6E7A69FE}|ConsoleApp4.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\consoleapp4\\multifunctionprinter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15FDD307-E838-4D74-A6EA-746F6E7A69FE}|ConsoleApp4.csproj|solutionrelative:multifunctionprinter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MultifunctionPrinter.cs",
+              "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\ConsoleApp4\\MultifunctionPrinter.cs",
+              "RelativeDocumentMoniker": "MultifunctionPrinter.cs",
+              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\ConsoleApp4\\MultifunctionPrinter.cs*",
+              "RelativeToolTip": "MultifunctionPrinter.cs*",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwCEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T19:10:44.833Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\ConsoleApp4\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\ConsoleApp4\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAswCcAAABRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T16:56:14.787Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
