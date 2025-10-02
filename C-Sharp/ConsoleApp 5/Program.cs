@@ -19,7 +19,10 @@ namespace dbmsApp1
             //DeleteBook();
             //DisplayStudentDetails();
             //DisplayBookDetails();
-            DisplayStudentDetailsDept();
+            //DisplayStudentDetailsDept();
+            //InsertIssueRecord();
+            //DisplayBooksIssuedToMember();
+            DisplayMostIssuedBook();
             Console.ReadKey();
         }
         public static void DisplayConnectionLibrary()
@@ -291,6 +294,93 @@ namespace dbmsApp1
                     {
                         Console.WriteLine($"Student ID -{reader["StudentID"]},Student Name -{reader["StudentName"]},Age -{reader["Age"]},Course -{reader["Course"]}");
                     }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Connection Failed: " + ex.Message);
+                }
+            }
+        }
+        public static void InsertIssueRecord()
+        {
+            string connString = "Data Source=LAPTOP-TH0TP9P1\\SQLEXPRESS;Initial Catalog=Stored_Procedure_Assignment;Trusted_Connection=True;";
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    Console.Write("Enter BookID: ");
+                    int bookID = Convert.ToInt32(Console.ReadLine());
+                    SqlCommand sqlCmd = new SqlCommand($"SELECT StockQty FROM Books WHERE BookID = {bookID};", conn);
+                    SqlDataReader reader = sqlCmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        int stockQty = Convert.ToInt32(reader["StockQty"]);
+                        if (stockQty > 0)
+                        {
+                            Console.Write("Enter MemberID: ");
+                            int MemberID = Convert.ToInt32(Console.ReadLine());
+                            reader.Close(); // Close reader before executing another command on the same connection
+                            sqlCmd = new SqlCommand($"INSERT INTO BorrowedBooks(BookID, MemberID, BorrowDate) VALUES({bookID}, {MemberID},GETDATE())", conn);
+                            int rowAffected = sqlCmd.ExecuteNonQuery();
+                            sqlCmd = new SqlCommand($"UPDATE Books set StockQty = StockQty-1 where BookID = {bookID};", conn);
+                            rowAffected = sqlCmd.ExecuteNonQuery();
+                            Console.WriteLine("Book record successfully");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Book is not available");
+                            reader.Close();
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Book not found");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Connection Failed: " + ex.Message);
+                }
+            }
+        }
+        public static void DisplayBooksIssuedToMember()
+        {
+            string connString = "Data Source=LAPTOP-TH0TP9P1\\SQLEXPRESS;Initial Catalog=Stored_Procedure_Assignment;Trusted_Connection=True;";
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    Console.Write("Enter Member ID: ");
+                    string memberID = Console.ReadLine();
+                    Console.WriteLine();
+                    SqlCommand sqlCmd = new SqlCommand($"SELECT B.BookID ,Title FROM Books B INNER JOIN BorrowedBooks BB ON B.BookID = BB.BookID WHERE BB.MemberID = {memberID};", conn);
+                    SqlDataReader reader = sqlCmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Console.WriteLine($"BookId -{reader["BookId"]},Title -{reader["Title"]}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Connection Failed: " + ex.Message);
+                }
+            }
+        }
+        public static void DisplayMostIssuedBook()
+        {
+            string connString = "Data Source=LAPTOP-TH0TP9P1\\SQLEXPRESS;Initial Catalog=Stored_Procedure_Assignment;Trusted_Connection=True;";
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand sqlCmd = new SqlCommand("SELECT TOP 1 B.Title, COUNT(*) AS IssueCount FROM BorrowedBooks BB INNER JOIN Books B ON BB.BookID = B.BookID GROUP BY Title ORDER BY COUNT(*) DESC;", conn);
+                    SqlDataReader reader = sqlCmd.ExecuteReader();
+                    reader.Read();
+                    Console.WriteLine($"Most Issued Book Title -{reader["Title"]},Issue Count -{reader["IssueCount"]}");
                 }
                 catch (Exception ex)
                 {

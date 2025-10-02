@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\ConsoleApp 5\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{94550CB5-76DB-4E4C-A5FD-D9E666D9B522}|ConsoleApp 5.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\consoleapp 5\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{94550CB5-76DB-4E4C-A5FD-D9E666D9B522}|ConsoleApp 5.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FD92A909-E69E-46E8-A286-20CC6182C9D3}|..\\HospitalManagementSystem\\HospitalManagementSystem.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\hospitalmanagementsystem\\hospital_packages\\displaypatients.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{94550CB5-76DB-4E4C-A5FD-D9E666D9B522}|ConsoleApp 5.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\consoleapp 5\\demo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{94550CB5-76DB-4E4C-A5FD-D9E666D9B522}|ConsoleApp 5.csproj|solutionrelative:demo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FD92A909-E69E-46E8-A286-20CC6182C9D3}|..\\HospitalManagementSystem\\HospitalManagementSystem.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\hospitalmanagementsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD92A909-E69E-46E8-A286-20CC6182C9D3}|..\\HospitalManagementSystem\\HospitalManagementSystem.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\hospitalmanagementsystem\\hospital_packages\\displaydoctors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD92A909-E69E-46E8-A286-20CC6182C9D3}|..\\HospitalManagementSystem\\HospitalManagementSystem.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\hospitalmanagementsystem\\hospital_packages\\dbconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +22,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "demo.cs",
-              "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\ConsoleApp 5\\demo.cs",
-              "RelativeDocumentMoniker": "demo.cs",
-              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\ConsoleApp 5\\demo.cs",
-              "RelativeToolTip": "demo.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAF4AAABBAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "DisplayDoctors.cs",
+              "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\HospitalManagementSystem\\Hospital_Packages\\DisplayDoctors.cs",
+              "RelativeDocumentMoniker": "..\\HospitalManagementSystem\\Hospital_Packages\\DisplayDoctors.cs",
+              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\HospitalManagementSystem\\Hospital_Packages\\DisplayDoctors.cs",
+              "RelativeToolTip": "..\\HospitalManagementSystem\\Hospital_Packages\\DisplayDoctors.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-01T12:51:39.051Z",
+              "WhenOpened": "2025-10-02T10:41:14.915Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DbConnection.cs",
+              "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\HospitalManagementSystem\\Hospital_Packages\\DbConnection.cs",
+              "RelativeDocumentMoniker": "..\\HospitalManagementSystem\\Hospital_Packages\\DbConnection.cs",
+              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\HospitalManagementSystem\\Hospital_Packages\\DbConnection.cs",
+              "RelativeToolTip": "..\\HospitalManagementSystem\\Hospital_Packages\\DbConnection.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T10:40:31.55Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\ConsoleApp 5\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\ConsoleApp 5\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAABYBAAAAAAAAAAAtwC0BAAABAAAAAAAAAA==",
+              "Title": "DisplayPatients.cs",
+              "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\HospitalManagementSystem\\Hospital_Packages\\DisplayPatients.cs",
+              "RelativeDocumentMoniker": "..\\HospitalManagementSystem\\Hospital_Packages\\DisplayPatients.cs",
+              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\HospitalManagementSystem\\Hospital_Packages\\DisplayPatients.cs",
+              "RelativeToolTip": "..\\HospitalManagementSystem\\Hospital_Packages\\DisplayPatients.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T07:08:14.27Z",
+              "WhenOpened": "2025-10-02T10:37:10.076Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\HospitalManagementSystem\\Program.cs",
+              "RelativeDocumentMoniker": "..\\HospitalManagementSystem\\Program.cs",
+              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\HospitalManagementSystem\\Program.cs",
+              "RelativeToolTip": "..\\HospitalManagementSystem\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T10:31:37.657Z",
               "EditorCaption": ""
             }
           ]
