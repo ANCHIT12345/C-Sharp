@@ -1,3 +1,4 @@
+
 --CREATE TABLE Patients (
 
 --    PatientID INT PRIMARY KEY IDENTITY,
@@ -35,11 +36,6 @@
 --    AppointmentDate DATETIME
 
 --);
-
-
-
-
-
 
 
 
