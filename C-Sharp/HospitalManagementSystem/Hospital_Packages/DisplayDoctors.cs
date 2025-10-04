@@ -106,5 +106,30 @@ namespace HospitalManagementSystem.Hospital_Packages
                 }
             }
         }
+        public static void DisplayMostConsultedDoctor()
+        {
+            string connString = "Data Source=LAPTOP-TH0TP9P1\\SQLEXPRESS;Initial Catalog=Stored_Procedure_Assignment;Trusted_Connection=True;";
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand sqlCmd = new SqlCommand("SELECT TOP 1 DoctorID, COUNT(*) AS ConsultationCount FROM Appointments GROUP BY DoctorID ORDER BY ConsultationCount DESC;", conn);
+                    SqlDataReader reader = sqlCmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        Console.WriteLine("Most Consulted Doctor ID: " + reader["DoctorID"] + ", Consultation Count: " + reader["ConsultationCount"]);
+                    }
+                    else
+                    {
+                        Console.WriteLine("No consultation records found.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Connection Failed: " + ex.Message);
+                }
+            }
+        }
     }
 }

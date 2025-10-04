@@ -57,5 +57,30 @@ namespace HospitalManagementSystem.Hospital_Packages
                 }
             }
         }
+        public void insertAppointment()
+        {
+            string connString = "Data Source=LAPTOP-TH0TP9P1\\SQLEXPRESS;Initial Catalog=Stored_Procedure_Assignment;Trusted_Connection=True;";
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                try
+                {
+                    conn.Open();
+                    Console.WriteLine("Connection Successful");
+                    Console.WriteLine("Enter Patient ID:");
+                    int patientId = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Enter Doctor ID:");
+                    int doctorId = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Enter Appointment Date (yyyy-mm-dd):");
+                    string appointmentDate = Console.ReadLine();
+                    SqlCommand sqlCmd = new SqlCommand($"INSERT INTO Appointments(PatientID, DoctorID, AppointmentDate) VALUES({patientId},{doctorId},'{appointmentDate}')", conn);
+                    int rowAffected = sqlCmd.ExecuteNonQuery();
+                    Console.WriteLine("Appointment inserted successfully");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Connection Failed: " + ex.Message);
+                }
+            }
+        }
     }
 }

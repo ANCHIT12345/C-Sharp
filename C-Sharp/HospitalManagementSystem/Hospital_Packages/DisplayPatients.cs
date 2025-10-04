@@ -63,9 +63,13 @@ namespace HospitalManagementSystem.Hospital_Packages
                     int patientID = Convert.ToInt32(Console.ReadLine());
                     SqlCommand sqlCmd = new SqlCommand($"SELECT * FROM Patients where PatientID = {patientID};", conn);
                     SqlDataReader reader = sqlCmd.ExecuteReader();
-                    while (reader.Read())
+                    if (reader.Read())
                     {
                         Console.WriteLine("Patient ID: " + reader["PatientID"] + ", Name: " + reader["Name"] + ", Age: " + reader["Age"] + ", Disease : " + reader["Disease"]);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Patient with ID " + patientID + " not found.");
                     }
                 }
                 catch (Exception ex)

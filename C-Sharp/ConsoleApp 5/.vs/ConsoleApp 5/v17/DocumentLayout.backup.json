@@ -6,17 +6,11 @@
       "AbsoluteMoniker": "D:0:0:{FD92A909-E69E-46E8-A286-20CC6182C9D3}|..\\HospitalManagementSystem\\HospitalManagementSystem.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\hospitalmanagementsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Anchit\\Downloads\\Database_Program.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{94550CB5-76DB-4E4C-A5FD-D9E666D9B522}|ConsoleApp 5.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\consoleapp 5\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{94550CB5-76DB-4E4C-A5FD-D9E666D9B522}|ConsoleApp 5.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FD92A909-E69E-46E8-A286-20CC6182C9D3}|..\\HospitalManagementSystem\\HospitalManagementSystem.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\hospitalmanagementsystem\\hospital_packages\\deleteoperations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FD92A909-E69E-46E8-A286-20CC6182C9D3}|..\\HospitalManagementSystem\\HospitalManagementSystem.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\hospitalmanagementsystem\\hospital_packages\\updateoperations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Anchit\\Downloads\\Database_Program.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,24 +20,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "DeleteOperations.cs",
-              "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\HospitalManagementSystem\\Hospital_Packages\\DeleteOperations.cs",
-              "RelativeDocumentMoniker": "..\\HospitalManagementSystem\\Hospital_Packages\\DeleteOperations.cs",
-              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\HospitalManagementSystem\\Hospital_Packages\\DeleteOperations.cs",
-              "RelativeToolTip": "..\\HospitalManagementSystem\\Hospital_Packages\\DeleteOperations.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAQwDEAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T09:45:56.225Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\ConsoleApp 5\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -62,33 +43,20 @@
               "RelativeDocumentMoniker": "..\\HospitalManagementSystem\\Program.cs",
               "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\HospitalManagementSystem\\Program.cs",
               "RelativeToolTip": "..\\HospitalManagementSystem\\Program.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAwwD8AAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAACsAAAAAAAAAAAAkwBIAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-02T10:31:37.657Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UpdateOperations.cs",
-              "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\HospitalManagementSystem\\Hospital_Packages\\UpdateOperations.cs",
-              "RelativeDocumentMoniker": "..\\HospitalManagementSystem\\Hospital_Packages\\UpdateOperations.cs",
-              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\HospitalManagementSystem\\Hospital_Packages\\UpdateOperations.cs",
-              "RelativeToolTip": "..\\HospitalManagementSystem\\Hospital_Packages\\UpdateOperations.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAACAAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T07:48:11.394Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "Database_Program.txt",
               "DocumentMoniker": "C:\\Users\\Anchit\\Downloads\\Database_Program.txt",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Downloads\\Database_Program.txt",
               "ToolTip": "C:\\Users\\Anchit\\Downloads\\Database_Program.txt",
               "RelativeToolTip": "..\\..\\..\\..\\Downloads\\Database_Program.txt",
-              "ViewState": "AgIAAJwAAAAAAAAAAAAAAJ4AAABGAAAAAAAAAA==",
+              "ViewState": "AgIAAKgAAAAAAAAAAAAAANMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
               "WhenOpened": "2025-10-04T07:44:24.242Z",
               "EditorCaption": ""

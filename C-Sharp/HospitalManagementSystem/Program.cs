@@ -84,7 +84,10 @@ namespace dbmsApp1
                 "6. Display Doctor by Doctor ID\n" +
                 "7. Display all Patients for same disease\n" +
                 "8. Display all Doctors for same specialization\n" +
-                "Enter your choice (1-8):");
+                "9. Display all Appointments for a Patient ID\n" +
+                "10. Display all Appointments for a Doctor ID\n" +
+                "11. Display most consulted doctor\n"+
+                "Enter your choice (1-11):");
             int choice = Convert.ToInt32(Console.ReadLine());
             switch (choice)
             {
@@ -112,6 +115,15 @@ namespace dbmsApp1
                 case 8:
                     HospitalManagementSystem.Hospital_Packages.DisplayDoctors.DisplayDoctorsBySpecialization();
                     break;
+                case 9:
+                    HospitalManagementSystem.Hospital_Packages.DisplayAppointments.DisplayAppointmentsByPatientID();
+                    break;
+                case 10:
+                    HospitalManagementSystem.Hospital_Packages.DisplayAppointments.DisplayAppointmentsByDoctorID();
+                    break;
+                case 11:
+                    HospitalManagementSystem.Hospital_Packages.DisplayDoctors.DisplayMostConsultedDoctor();
+                    break;
                 default:
                     Console.WriteLine("Invalid choice");
                     break;
@@ -127,13 +139,13 @@ namespace dbmsApp1
                 "Choose the insert operation you want to perform\n" +
                 "1. Insert a new patient\n" +
                 "2. Insert a new doctor\n" +
-                //"3. Insert a new appointment\n" +
+                "3. Insert a new appointment\n" +
                 //"4. Insert a new department\n" +
                 //"5. Insert a new treatment\n" +
                 //"6. Insert a new medicine\n" +
                 //"7. Insert a new room\n" +
                 //"8. Insert a new bill\n" +
-                "Enter your choice (1-2):");
+                "Enter your choice (1-3):");
             int choice = Convert.ToInt32(Console.ReadLine());
             HospitalManagementSystem.Hospital_Packages.InsertOperations insertOperations = new HospitalManagementSystem.Hospital_Packages.InsertOperations();
             switch (choice)
@@ -143,6 +155,9 @@ namespace dbmsApp1
                     break;
                 case 2:
                     insertOperations.insertDoctor();
+                    break;
+                case 3:
+                    insertOperations.insertAppointment();
                     break;
                 default:
                     Console.WriteLine("Invalid choice");
@@ -191,13 +206,13 @@ namespace dbmsApp1
                 "Choose the delete operation you want to perform\n" +
                 "1. Delete a patient\n" +
                 "2. Delete a doctor\n" +
-                //"3. Delete an appointment\n" +
+                "3. Delete/Cancel an appointment\n" +
                 //"4. Delete a department\n" +
                 //"5. Delete a treatment\n" +
                 //"6. Delete a medicine\n" +
                 //"7. Delete a room\n" +
                 //"8. Delete a bill\n" +
-                "Enter your choice (1-2):");
+                "Enter your choice (1-3):");
             int choice = Convert.ToInt32(Console.ReadLine());
             HospitalManagementSystem.Hospital_Packages.DeleteOperations deleteOperations = new HospitalManagementSystem.Hospital_Packages.DeleteOperations();
             switch (choice)
@@ -207,6 +222,9 @@ namespace dbmsApp1
                     break;
                 case 2:
                     deleteOperations.deleteDoctor();
+                    break;
+                case 3:
+                    deleteOperations.deleteAppointment();
                     break;
                 default:
                     Console.WriteLine("Invalid choice");
