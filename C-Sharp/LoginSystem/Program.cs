@@ -15,6 +15,8 @@ namespace dbmsApp1
             Console.WriteLine("Enter the Operation to be performed");
             Console.WriteLine("1. Insert New User");
             Console.WriteLine("2. User Login");
+            Console.WriteLine("3. Check Student Info");
+            Console.WriteLine("4. Search book via SP");
             int choice = Convert.ToInt32(Console.ReadLine());
             switch (choice)
             {
@@ -25,6 +27,14 @@ namespace dbmsApp1
                 case 2:
                     Login login = new Login();
                     login.UserLogin();
+                    break;
+                case 3:
+                    CheckStudent checkStudent = new CheckStudent();
+                    checkStudent.CheckStudentInfo();
+                    break;
+                case 4:
+                    SearchBook searchBook = new SearchBook();
+                    searchBook.SearchBookViaSP();
                     break;
                 default:
                     Console.WriteLine("Invalid Choice");
@@ -48,6 +58,26 @@ namespace dbmsApp1
         {
             LoginSystem.Login_Packages.Login login = new LoginSystem.Login_Packages.Login();
             login.UserLogin();
+            Program program = new Program();
+            program.Run();
+        }
+    }
+    class CheckStudent
+    {
+        public void CheckStudentInfo()
+        {
+            LoginSystem.Login_Packages.CheckStudent checkStudent = new LoginSystem.Login_Packages.CheckStudent();
+            checkStudent.CheckStudentInfo();
+            Program program = new Program();
+            program.Run();
+        }
+    }
+    class SearchBook
+    {
+        public void SearchBookViaSP()
+        {
+            LoginSystem.Login_Packages.SearchBookprogram searchBook2 = new LoginSystem.Login_Packages.SearchBookprogram();
+            searchBook2.SearchBookViaSP();
             Program program = new Program();
             program.Run();
         }

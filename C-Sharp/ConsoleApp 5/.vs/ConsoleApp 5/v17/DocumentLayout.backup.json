@@ -3,13 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\ConsoleApp 5\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{02F4AE44-5D5F-43F2-8E64-4F75CE3CE234}|..\\LoginSystem\\LoginSystem.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\loginsystem\\login_packages\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{02F4AE44-5D5F-43F2-8E64-4F75CE3CE234}|..\\LoginSystem\\LoginSystem.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\loginsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02F4AE44-5D5F-43F2-8E64-4F75CE3CE234}|..\\LoginSystem\\LoginSystem.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\loginsystem\\login_packages\\insertnewuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{02F4AE44-5D5F-43F2-8E64-4F75CE3CE234}|..\\LoginSystem\\LoginSystem.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\loginsystem\\login_packages\\searchbook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,45 +16,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Login.cs",
-              "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\LoginSystem\\Login_Packages\\Login.cs",
-              "RelativeDocumentMoniker": "..\\LoginSystem\\Login_Packages\\Login.cs",
-              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\LoginSystem\\Login_Packages\\Login.cs",
-              "RelativeToolTip": "..\\LoginSystem\\Login_Packages\\Login.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBQAAAAgAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "SearchBook.cs",
+              "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\LoginSystem\\Login_Packages\\SearchBook.cs",
+              "RelativeDocumentMoniker": "..\\LoginSystem\\Login_Packages\\SearchBook.cs",
+              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\LoginSystem\\Login_Packages\\SearchBook.cs",
+              "RelativeToolTip": "..\\LoginSystem\\Login_Packages\\SearchBook.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-09T19:20:40.615Z",
+              "WhenOpened": "2025-10-10T14:28:55.139Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\LoginSystem\\Program.cs",
               "RelativeDocumentMoniker": "..\\LoginSystem\\Program.cs",
               "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\LoginSystem\\Program.cs",
               "RelativeToolTip": "..\\LoginSystem\\Program.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAowDMAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAYwFQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-09T19:19:49.035Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "InsertNewUser.cs",
-              "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\LoginSystem\\Login_Packages\\InsertNewUser.cs",
-              "RelativeDocumentMoniker": "..\\LoginSystem\\Login_Packages\\InsertNewUser.cs",
-              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\LoginSystem\\Login_Packages\\InsertNewUser.cs",
-              "RelativeToolTip": "..\\LoginSystem\\Login_Packages\\InsertNewUser.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABsAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-09T19:14:47.06Z",
               "EditorCaption": ""
             }
           ]
