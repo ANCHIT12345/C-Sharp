@@ -38,12 +38,27 @@ BEGIN
     WHERE Username = @username AND Password = @password;
 END;
 
+SELECT * FROM Students
 
+CREATE PROCEDURE usp_CheckStudent
+    @studentId INT
+AS
+BEGIN
+    IF EXISTS (SELECT 1 FROM Students WHERE StudentID = @studentId)
+        RETURN 1;
+    ELSE
+        RETURN 0;
+END;
 
+SELECT * FROM Books
 
-
-
-
-
+CREATE PROCEDURE usp_SearchBookById
+    @BookId INT
+AS
+BEGIN
+    SELECT BookId, Title, Author
+    FROM Books
+    WHERE BookId = @BookId;
+END;
 
 
