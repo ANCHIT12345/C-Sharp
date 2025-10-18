@@ -20,7 +20,8 @@ namespace SampleApp
             //copyMove.Run();
             //DeleteFile();
             //FileStats();
-            SearchFile();
+            //SearchFile();
+            JSONSerialization.Run();
             Console.Read();
         }
         public static void StreamWriter()
