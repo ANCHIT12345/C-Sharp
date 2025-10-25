@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIMS", "..\SIMS\SIMS.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileHandling", "..\FileHandling\FileHandling.csproj", "{3D7F80B2-C0B9-4BE7-B935-5483B9425C2F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory & Billing System (Retail Store)", "..\Inventory & Billing System (Retail Store)\Inventory & Billing System (Retail Store).csproj", "{0F4BA643-EC45-4806-9407-498E0131FCB5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{3D7F80B2-C0B9-4BE7-B935-5483B9425C2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D7F80B2-C0B9-4BE7-B935-5483B9425C2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D7F80B2-C0B9-4BE7-B935-5483B9425C2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F4BA643-EC45-4806-9407-498E0131FCB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F4BA643-EC45-4806-9407-498E0131FCB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F4BA643-EC45-4806-9407-498E0131FCB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F4BA643-EC45-4806-9407-498E0131FCB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
