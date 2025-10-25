@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Inventory & Billing System (Retail Store)")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b120549a5d07720db35a31a2e5a3dd899075b9e7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0d8f3255906971110bdb6e77ea46af942d3d78c3")]
 [assembly: System.Reflection.AssemblyProductAttribute("Inventory & Billing System (Retail Store)")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Inventory & Billing System (Retail Store)")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,41 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Text;
 using System.Text.Json;
 
 namespace Inventory___Billing_System__Retail_Store_.Services
 {
-    // 1. Interface for billing operations
     interface IBillable
     {
-        void CreateBill(int qty, int customerID);
+        void Checkout(int customerID);
     }
-
-    // 2. Abstract product class
     abstract class ProductBase
     {
         public int ProductID { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
         public int StockQty { get; set; }
+        public string Category { get; set; }
 
         public abstract decimal GetDiscount(int qty);
 
         public override string ToString()
         {
-            return $"ID: {ProductID}, Name: {Name}, Price: {Price:C}, Stock: {StockQty}";
+            return $"ID: {ProductID}, Name: {Name}, Price: {Price:C}, Stock: {StockQty}, Category: {Category}";
         }
     }
 
-    // 3. Derived product classes with custom discounts
     class Grocery : ProductBase
     {
         public override decimal GetDiscount(int qty)
         {
-            // Example: 5% discount for 10 or more items
-            if (qty >= 10) return 0.05m;
-            return 0m;
+            return qty >= 10 ? 0.05m : 0m;
         }
     }
 
@@ -43,116 +40,306 @@ namespace Inventory___Billing_System__Retail_Store_.Services
     {
         public override decimal GetDiscount(int qty)
         {
-            // Example: 10% discount for 2 or more items
-            if (qty >= 2) return 0.10m;
-            return 0m;
+            return qty >= 2 ? 0.10m : 0m;
         }
     }
-
-    // 4. Billing service
-    internal class Billing : IBillable
+    static class ProductFactory
     {
-        private static string ConnectionString = "Data Source=LAPTOP-TH0TP9P1\\SQLEXPRESS;Initial Catalog=Inventory_Billing;Trusted_Connection=True;";
-        private ProductBase Product;
-        private int Quantity;
-
-        public Billing(ProductBase product, int quantity)
+        public static ProductBase CreateFromRow(SqlDataReader reader)
         {
-            Product = product;
-            Quantity = quantity;
+            int id = Convert.ToInt32(reader["ProductID"]);
+            string name = Convert.ToString(reader["Name"]);
+            decimal price = Convert.ToDecimal(reader["Price"]);
+            int stock = Convert.ToInt32(reader["StockQty"]);
+            string category = reader["Category"] == DBNull.Value ? "Grocery" : Convert.ToString(reader["Category"]);
+
+            ProductBase product;
+            if (category.Equals("Electronics", StringComparison.OrdinalIgnoreCase))
+                product = new Electronics();
+            else
+                product = new Grocery();
+
+            product.ProductID = id;
+            product.Name = name;
+            product.Price = price;
+            product.StockQty = stock;
+            product.Category = category;
+            return product;
+        }
+    }
+    internal class BillingService : IBillable
+    {
+        private static readonly string ConnectionString ="Data Source=LAPTOP-TH0TP9P1\\SQLEXPRESS;Initial Catalog=Inventory_Billing;Trusted_Connection=True;";
+        private Dictionary<int, int> cart = new Dictionary<int, int>();
+        private Dictionary<int, ProductBase> productCache = new Dictionary<int, ProductBase>();
+        public void AddToCart(int productId, int quantity)
+        {
+            if (quantity <= 0)
+            {
+                Console.WriteLine("Quantity must be > 0.");
+                return;
+            }
+            var product = LoadProductById(productId);
+            if (product == null)
+            {
+                Console.WriteLine("Product not found.");
+                return;
+            }
+
+            if (product.StockQty < quantity)
+            {
+                Console.WriteLine($"Not enough stock available. Current stock: {product.StockQty}");
+                return;
+            }
+
+            if (cart.ContainsKey(productId))
+                cart[productId] += quantity;
+            else
+                cart[productId] = quantity;
+            productCache[productId] = product;
+
+            Console.WriteLine($"Added {quantity} of '{product.Name}' (ID: {productId}) to cart.");
         }
 
-        public void CreateBill(int qty, int customerID)
+        public void RemoveFromCart(int productId, int quantity)
         {
-            try
+            if (!cart.ContainsKey(productId))
             {
-                using (SqlConnection con = new SqlConnection(ConnectionString))
+                Console.WriteLine("Product not in cart.");
+                return;
+            }
+
+            if (quantity <= 0)
+            {
+                Console.WriteLine("Quantity must be > 0.");
+                return;
+            }
+
+            cart[productId] -= quantity;
+            if (cart[productId] <= 0)
+            {
+                cart.Remove(productId);
+                productCache.Remove(productId);
+                Console.WriteLine($"Removed product {productId} from cart.");
+            }
+            else
+            {
+                Console.WriteLine($"Reduced product {productId} quantity by {quantity}. New qty: {cart[productId]}");
+            }
+        }
+
+        public void ViewCart()
+        {
+            if (cart.Count == 0)
+            {
+                Console.WriteLine("Cart is empty.");
+                return;
+            }
+
+            Console.WriteLine("Cart contents:");
+            decimal runningTotal = 0m;
+            foreach (var kv in cart)
+            {
+                int pid = kv.Key;
+                int qty = kv.Value;
+                ProductBase product;
+                if (!productCache.TryGetValue(pid, out product))
                 {
-                    string updateQuery = "UPDATE Products SET StockQty = StockQty - @Quantity WHERE Name = @ProductName AND StockQty >= @Quantity";
-                    using (SqlCommand cmd = new SqlCommand(updateQuery, con))
+                    product = LoadProductById(pid);
+                    if (product != null) productCache[pid] = product;
+                }
+
+                if (product == null)
+                {
+                    Console.WriteLine($"ProductID {pid} - (details unavailable) x {qty}");
+                    continue;
+                }
+
+                decimal discount = product.GetDiscount(qty);
+                decimal total = product.Price * qty * (1 - discount);
+                runningTotal += total;
+
+                Console.WriteLine($"{product.Name} (ID:{pid}) - Qty: {qty}, Unit: {product.Price:C}, Discount: {discount:P}, Line Total: {total:C}");
+            }
+
+            Console.WriteLine($"Cart Total (est): {runningTotal:C}");
+        }
+
+        public void ClearCart()
+        {
+            cart.Clear();
+            productCache.Clear();
+            Console.WriteLine("Cart cleared.");
+        }
+        public void Checkout(int customerID)
+        {
+            if (cart.Count == 0)
+            {
+                Console.WriteLine("Cart empty - nothing to checkout.");
+                return;
+            }
+            List<int> productIds = new List<int>(cart.Keys);
+            var invoiceItems = new List<object>();
+            decimal grandTotal = 0m;
+            DateTime now = DateTime.Now;
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                con.Open();
+                using (SqlTransaction tx = con.BeginTransaction(IsolationLevel.ReadCommitted))
+                {
+                    try
                     {
-                        cmd.Parameters.AddWithValue("@ProductName", Product.Name);
-                        cmd.Parameters.AddWithValue("@Quantity", qty);
-                        con.Open();
-                        int rowsAffected = cmd.ExecuteNonQuery();
-                        if (rowsAffected > 0)
+                        foreach (var pid in productIds)
                         {
-                            Console.WriteLine("Stock updated successfully.");
-                            CreateInvoiceFile(qty, customerID);
-                            LogDailySale(qty, customerID);
+                            int desiredQty = cart[pid];
+
+                            using (SqlCommand cmd = new SqlCommand(
+                                "SELECT ProductID, Name, Price, StockQty, Category FROM Products WITH (UPDLOCK, ROWLOCK) WHERE ProductID = @pid", con, tx))
+                            {
+                                cmd.Parameters.AddWithValue("@pid", pid);
+
+                                using (SqlDataReader rdr = cmd.ExecuteReader())
+                                {
+                                    if (!rdr.Read())
+                                        throw new Exception($"ProductID {pid} not found.");
+
+                                    ProductBase product = ProductFactory.CreateFromRow(rdr);
+
+                                    if (product.StockQty < desiredQty)
+                                        throw new Exception($"Insufficient stock for '{product.Name}' (ID:{pid}). Available: {product.StockQty}, Requested: {desiredQty}");
+                                    productCache[pid] = product;
+                                }
+                            }
                         }
-                        else
+                        foreach (var pid in productIds)
                         {
-                            Console.WriteLine("Insufficient stock or product does not exist.");
+                            int qty = cart[pid];
+                            using (SqlCommand updateCmd = new SqlCommand(
+                                "UPDATE Products SET StockQty = StockQty - @qty WHERE ProductID = @pid", con, tx))
+                            {
+                                updateCmd.Parameters.AddWithValue("@qty", qty);
+                                updateCmd.Parameters.AddWithValue("@pid", pid);
+                                int rows = updateCmd.ExecuteNonQuery();
+                                if (rows == 0)
+                                    throw new Exception($"Failed to update stock for ProductID {pid}.");
+                            }
                         }
+                        tx.Commit();
+                        Console.WriteLine("Stock updated and transaction committed.");
+
+                    }
+                    catch (Exception ex)
+                    {
+                        try { tx.Rollback(); } catch { /* ignore rollback errors */ }
+                        Console.WriteLine("Checkout failed: " + ex.Message);
+                        return;
                     }
                 }
             }
-            catch (Exception ex)
+            foreach (var kv in cart)
             {
-                Console.WriteLine("Error creating bill: " + ex.Message);
+                int pid = kv.Key;
+                int qty = kv.Value;
+                var product = productCache[pid];
+                decimal discountRate = product.GetDiscount(qty);
+                decimal lineTotal = product.Price * qty * (1 - discountRate);
+                grandTotal += lineTotal;
+
+                invoiceItems.Add(new
+                {
+                    ProductID = pid,
+                    ProductName = product.Name,
+                    UnitPrice = product.Price,
+                    Quantity = qty,
+                    Discount = discountRate,
+                    LineTotal = lineTotal
+                });
             }
-        }
-
-        private void CreateInvoiceFile(int qty, int customerID)
-        {
-            decimal discountRate = Product.GetDiscount(qty);
-            decimal totalAmount = Product.Price * qty * (1 - discountRate);
-
             var invoice = new
             {
+                InvoiceID = Guid.NewGuid().ToString(),
                 CustomerID = customerID,
-                ProductID = Product.ProductID,
-                ProductName = Product.Name,
-                UnitPrice = Product.Price,
-                Quantity = qty,
-                Discount = discountRate,
-                TotalAmount = totalAmount,
-                Date = DateTime.Now
+                Date = now,
+                Items = invoiceItems,
+                GrandTotal = grandTotal
             };
+            string invoiceJsonFile = $"Invoice_Customer_{customerID}_{now:yyyyMMddHHmmss}.json";
+            string invoiceJson = JsonSerializer.Serialize(invoice, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(invoiceJsonFile, invoiceJson);
+            Console.WriteLine($"Invoice JSON saved: {invoiceJsonFile}");
+            StringBuilder txt = new StringBuilder();
+            txt.AppendLine($"Invoice ID: {invoice.InvoiceID}");
+            txt.AppendLine($"Customer ID: {customerID}");
+            txt.AppendLine($"Date: {now}");
+            txt.AppendLine("Items:");
+            foreach (var itemObj in invoiceItems)
+            {
+                string itemJson = JsonSerializer.Serialize(itemObj);
+                using (JsonDocument doc = JsonDocument.Parse(itemJson))
+                {
+                    var root = doc.RootElement;
+                    txt.AppendLine($" - {root.GetProperty("ProductName").GetString()} (ID:{root.GetProperty("ProductID").GetInt32()}) x {root.GetProperty("Quantity").GetInt32()} @ {root.GetProperty("UnitPrice").GetDecimal():C} " +
+                                   $"Discount: {root.GetProperty("Discount").GetDecimal():P} => {root.GetProperty("LineTotal").GetDecimal():C}");
+                }
+            }
+            txt.AppendLine($"Grand Total: {grandTotal:C}");
 
-            // Save JSON file
-            string jsonFileName = $"Invoice_Customer_{customerID}_{DateTime.Now:yyyyMMddHHmmss}.json";
-            string jsonContent = JsonSerializer.Serialize(invoice, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(jsonFileName, jsonContent);
-            Console.WriteLine($"Invoice saved as JSON: {jsonFileName}");
-
-            // Optional: Save as text file
-            string textFileName = $"Invoice_Customer_{customerID}_{DateTime.Now:yyyyMMddHHmmss}.txt";
-            string textContent = $"Invoice for Customer ID: {customerID}\n" +
-                                 $"Product: {Product.Name}\n" +
-                                 $"Quantity: {qty}\n" +
-                                 $"Unit Price: {Product.Price:C}\n" +
-                                 $"Discount: {discountRate:P}\n" +
-                                 $"Total Amount: {totalAmount:C}\n" +
-                                 $"Date: {DateTime.Now}\n";
-            File.WriteAllText(textFileName, textContent);
+            string invoiceTxtFile = $"Invoice_Customer_{customerID}_{now:yyyyMMddHHmmss}.txt";
+            File.WriteAllText(invoiceTxtFile, txt.ToString());
+            Console.WriteLine($"Invoice text saved: {invoiceTxtFile}");
+            AppendToDailySalesLog(new
+            {
+                InvoiceID = invoice.InvoiceID,
+                CustomerID = customerID,
+                Date = now,
+                Items = invoiceItems,
+                GrandTotal = grandTotal
+            });
+            ClearCart();
+            Console.WriteLine("Checkout completed successfully.");
         }
-
-        private void LogDailySale(int qty, int customerID)
+        private ProductBase LoadProductById(int productId)
+        {
+            using (SqlConnection con = new SqlConnection(ConnectionString))
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand("SELECT ProductID, Name, Price, StockQty, Category FROM Products WHERE ProductID = @pid", con))
+                {
+                    cmd.Parameters.AddWithValue("@pid", productId);
+                    using (SqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                        if (!rdr.Read()) return null;
+                        return ProductFactory.CreateFromRow(rdr);
+                    }
+                }
+            }
+        }
+        private void AppendToDailySalesLog(object saleEntry)
         {
             string logFile = $"DailySales_{DateTime.Now:yyyyMMdd}.json";
-
             List<object> sales = new List<object>();
+
             if (File.Exists(logFile))
             {
-                string existingData = File.ReadAllText(logFile);
-                sales = JsonSerializer.Deserialize<List<object>>(existingData) ?? new List<object>();
+                try
+                {
+                    string existing = File.ReadAllText(logFile);
+                    if (!string.IsNullOrWhiteSpace(existing))
+                    {
+                        sales = JsonSerializer.Deserialize<List<object>>(existing) ?? new List<object>();
+                    }
+                }
+                catch
+                {
+                    // ignore malformed log and overwrite
+                    sales = new List<object>();
+                }
             }
 
-            var sale = new
-            {
-                CustomerID = customerID,
-                ProductID = Product.ProductID,
-                ProductName = Product.Name,
-                Quantity = qty,
-                TotalAmount = Product.Price * qty * (1 - Product.GetDiscount(qty)),
-                Date = DateTime.Now
-            };
-
-            sales.Add(sale);
-            string updatedData = JsonSerializer.Serialize(sales, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(logFile, updatedData);
+            sales.Add(saleEntry);
+            string updated = JsonSerializer.Serialize(sales, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(logFile, updated);
+            Console.WriteLine($"Appended sale to daily log: {logFile}");
         }
     }
 }
