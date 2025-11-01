@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileHandling", "..\FileHand
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory & Billing System (Retail Store)", "..\Inventory & Billing System (Retail Store)\Inventory & Billing System (Retail Store).csproj", "{0F4BA643-EC45-4806-9407-498E0131FCB5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Threading & Concurrency in C#", "..\Threading & Concurrency in C#\Threading & Concurrency in C#.csproj", "{827E7FA5-6CE4-4C25-AFE7-8C04C3A71768}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{0F4BA643-EC45-4806-9407-498E0131FCB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F4BA643-EC45-4806-9407-498E0131FCB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F4BA643-EC45-4806-9407-498E0131FCB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{827E7FA5-6CE4-4C25-AFE7-8C04C3A71768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{827E7FA5-6CE4-4C25-AFE7-8C04C3A71768}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{827E7FA5-6CE4-4C25-AFE7-8C04C3A71768}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{827E7FA5-6CE4-4C25-AFE7-8C04C3A71768}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

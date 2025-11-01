@@ -1,0 +1,62 @@
+User:
+ 	User_ID - PRIMARY KEY
+ 	Name
+ 	Emai
+ 	PhoneNo
+ 	Country
+ 	UserType - FOREIGN KEY (TypeID User type table)
+
+User Type:
+ 	TypeID - PRIMARY KEY
+ 	Type (Eg: Admin,Helper,Player)
+
+Game Details:
+ 	Game_ID - PRIMARY KRY
+ 	Game Held Date
+ 	Game Start Time
+ 	Game End Time
+ 	Game Rounds Held
+ 	Game Winner - FOREIGN KEY (User_ID user table)
+ 	Contest Type - FOREIGN KEY (ContestTypeID contest type table)
+ 	ContestID - FOREIGN KEY (ContestID Contest table)
+ 	LocationID - FOREIGN KEY (LocationID Location contest table)
+
+Contest :
+ 	ContestID - PRIMARY KEY
+ 	Game ID - FOREIGN KEY (Game_ID game details table)
+ 	MVP_OF_GAME - FOREIGN KEY (User_ID user table)
+ 	Best_Time
+ 	Runner-up FOREIGN KEY (User_ID user table)
+ 
+ 
+Player Score:
+ 	ScoreID - PRIMARY KEY
+ 	PlayerID - FOREIGN KEY (User_ID user table)
+ 	Score
+ 	Contest_ID - FOREIGN KEY (ContestID Contest table)
+ 	Game_ID - FOREIGN KEY (Game_ID game details table)
+ 	Rank
+
+Contest type:
+ 	ContestTypeID - PRIMARY KEY
+ 	Contest Type (Eg: Online Global, Per Country, Championship, World Championship)
+
+Location Contest:
+ 	Location ID - PRIMARY KEY
+ 	Continent
+ 	Country
+ 	State
+ 	City
+ 	Address
+
+Leaderboard Export History:
+ 	ExportID - PRIMARY KEY
+ 	Game_ID - FOREIGN KEY
+ 	File Location
+ 	Exported At
+
+Application Log:
+ 	LogID - PRIMARY KEY
+ 	LogType
+ 	Message
+ 	Created At
