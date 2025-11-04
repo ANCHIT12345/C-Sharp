@@ -1,0 +1,15 @@
+C:\Users\Anchit\github\Console app\C-Sharp\Threading & Concurrency in C#\obj\Debug\net8.0\Threading & Concurrency in C#.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Anchit\github\Console app\C-Sharp\Threading & Concurrency in C#\obj\Debug\net8.0\Threading & Concurrency in C#.AssemblyInfoInputs.cache
+C:\Users\Anchit\github\Console app\C-Sharp\Threading & Concurrency in C#\obj\Debug\net8.0\Threading & Concurrency in C#.AssemblyInfo.cs
+C:\Users\Anchit\github\Console app\C-Sharp\Threading & Concurrency in C#\obj\Debug\net8.0\Threading & Concurrency in C#.csproj.CoreCompileInputs.cache
+C:\Users\Anchit\github\Console app\C-Sharp\Threading & Concurrency in C#\obj\Debug\net8.0\Threading & Concurrency in C#.sourcelink.json
+C:\Users\Anchit\github\Console app\C-Sharp\Threading & Concurrency in C#\bin\Debug\net8.0\Threading & Concurrency in C#.exe
+C:\Users\Anchit\github\Console app\C-Sharp\Threading & Concurrency in C#\bin\Debug\net8.0\Threading & Concurrency in C#.deps.json
+C:\Users\Anchit\github\Console app\C-Sharp\Threading & Concurrency in C#\bin\Debug\net8.0\Threading & Concurrency in C#.runtimeconfig.json
+C:\Users\Anchit\github\Console app\C-Sharp\Threading & Concurrency in C#\bin\Debug\net8.0\Threading & Concurrency in C#.dll
+C:\Users\Anchit\github\Console app\C-Sharp\Threading & Concurrency in C#\bin\Debug\net8.0\Threading & Concurrency in C#.pdb
+C:\Users\Anchit\github\Console app\C-Sharp\Threading & Concurrency in C#\obj\Debug\net8.0\Threading & Concurrency in C#.dll
+C:\Users\Anchit\github\Console app\C-Sharp\Threading & Concurrency in C#\obj\Debug\net8.0\refint\Threading & Concurrency in C#.dll
+C:\Users\Anchit\github\Console app\C-Sharp\Threading & Concurrency in C#\obj\Debug\net8.0\Threading & Concurrency in C#.pdb
+C:\Users\Anchit\github\Console app\C-Sharp\Threading & Concurrency in C#\obj\Debug\net8.0\Threading & Concurrency in C#.genruntimeconfig.cache
+C:\Users\Anchit\github\Console app\C-Sharp\Threading & Concurrency in C#\obj\Debug\net8.0\ref\Threading & Concurrency in C#.dll
