@@ -6,7 +6,7 @@
       "AbsoluteMoniker": "D:0:0:{827E7FA5-6CE4-4C25-AFE7-8C04C3A71768}|..\\Threading \u0026 Concurrency in C#\\Threading \u0026 Concurrency in C#.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\threading \u0026 concurrency in c#\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{827E7FA5-6CE4-4C25-AFE7-8C04C3A71768}|..\\Threading \u0026 Concurrency in C#\\Threading \u0026 Concurrency in C#.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\threading \u0026 concurrency in c#\\threadpooling.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{827E7FA5-6CE4-4C25-AFE7-8C04C3A71768}|..\\Threading \u0026 Concurrency in C#\\Threading \u0026 Concurrency in C#.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\threading \u0026 concurrency in c#\\donwloadmanagersimulation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -21,14 +21,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "threadpooling.cs",
-              "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\Threading \u0026 Concurrency in C#\\threadpooling.cs",
-              "RelativeDocumentMoniker": "..\\Threading \u0026 Concurrency in C#\\threadpooling.cs",
-              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\Threading \u0026 Concurrency in C#\\threadpooling.cs*",
-              "RelativeToolTip": "..\\Threading \u0026 Concurrency in C#\\threadpooling.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABFAAAAAAAAAA==",
+              "Title": "DonwloadManagerSimulation.cs",
+              "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\Threading \u0026 Concurrency in C#\\DonwloadManagerSimulation.cs",
+              "RelativeDocumentMoniker": "..\\Threading \u0026 Concurrency in C#\\DonwloadManagerSimulation.cs",
+              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\Threading \u0026 Concurrency in C#\\DonwloadManagerSimulation.cs*",
+              "RelativeToolTip": "..\\Threading \u0026 Concurrency in C#\\DonwloadManagerSimulation.cs*",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAkwCoAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T10:17:23.721Z",
+              "WhenOpened": "2025-11-05T08:56:27.014Z",
               "EditorCaption": ""
             },
             {
@@ -37,9 +37,9 @@
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\Threading \u0026 Concurrency in C#\\Program.cs",
               "RelativeDocumentMoniker": "..\\Threading \u0026 Concurrency in C#\\Program.cs",
-              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\Threading \u0026 Concurrency in C#\\Program.cs",
-              "RelativeToolTip": "..\\Threading \u0026 Concurrency in C#\\Program.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACAAAAAgAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\Threading \u0026 Concurrency in C#\\Program.cs*",
+              "RelativeToolTip": "..\\Threading \u0026 Concurrency in C#\\Program.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-26T08:09:11.507Z",
               "EditorCaption": ""
