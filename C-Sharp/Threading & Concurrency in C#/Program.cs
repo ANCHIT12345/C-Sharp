@@ -36,6 +36,10 @@ namespace threading
             //TPL.Run2();
             //DonwloadManagerSimulation.Run();
             //DonwloadManagerSimulation.Main();
+            //HotelRoomBooking_DeadLock.Run();
+            //HotelRoomBooking_Solution.Run();
+            //ProducerConsumerDemo.Run();
+            //DatabaseConnectionPoolusingSemaphoreSlim.Run();
         }
         static void ParalelFileWriting(string path, int threadNum)
         {
