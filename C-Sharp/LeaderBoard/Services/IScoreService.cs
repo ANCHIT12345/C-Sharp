@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LeaderBoard.Services
 {
-    internal interface IScoreService
+    public interface IScoreService
     {
         bool SubmitScore(Score score);
         Task SimulatePlayerScoreAsync(int contestId, int[] playerIds, int submissionsPerPlayer = 5, int maxDegreeOfParallelism = 10);

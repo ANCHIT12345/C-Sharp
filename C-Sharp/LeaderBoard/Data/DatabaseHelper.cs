@@ -62,7 +62,7 @@ namespace LeaderBoard.Data
         public IDataReader ExecuteReader(string sql, object parameters = null)
         {
             var cmd = CreateCommand(sql, parameters);
-            return cmd.ExecuteReader(CommandBehavior.CloseConnection);.
+            return cmd.ExecuteReader(CommandBehavior.CloseConnection);
         }
         private SqlCommand CreateCommand(string sql, object parameters)
         {
