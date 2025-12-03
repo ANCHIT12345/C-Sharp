@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory & Billing System 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Threading & Concurrency in C#", "..\Threading & Concurrency in C#\Threading & Concurrency in C#.csproj", "{827E7FA5-6CE4-4C25-AFE7-8C04C3A71768}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeaderBoard", "..\LeaderBoard\LeaderBoard.csproj", "{47C5013B-1CC6-4CE9-BC94-C4787D955CBA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{827E7FA5-6CE4-4C25-AFE7-8C04C3A71768}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{827E7FA5-6CE4-4C25-AFE7-8C04C3A71768}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{827E7FA5-6CE4-4C25-AFE7-8C04C3A71768}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47C5013B-1CC6-4CE9-BC94-C4787D955CBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47C5013B-1CC6-4CE9-BC94-C4787D955CBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47C5013B-1CC6-4CE9-BC94-C4787D955CBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47C5013B-1CC6-4CE9-BC94-C4787D955CBA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
