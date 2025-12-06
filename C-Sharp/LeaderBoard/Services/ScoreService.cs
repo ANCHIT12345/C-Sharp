@@ -101,9 +101,9 @@ namespace LeaderBoard.Services
                                     PlayerId = pid,
                                     ContestId = contestId,
                                     Points = points,
-                                    SubmittedAt = DateTime.UtcNow;
+                                    SubmittedAt = DateTime.UtcNow
                                 };
-                                await Task,Delay(rnd.Next(30, 1200)).ConfigureAwait(false);
+                                await Task.Delay(rnd.Next(30, 1200)).ConfigureAwait(false);
                                 await _concurrencyShemaphore.WaitAsync().ConfigureAwait(false);
                                 try
                                 {
