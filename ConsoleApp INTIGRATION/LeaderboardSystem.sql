@@ -68,7 +68,7 @@ ScoreID INT PRIMARY KEY IDENTITY(1,1),
 PlayerID INT REFERENCES [User](UserID),
 Score DECIMAL(10,2),
 GameID INT REFERENCES GameDetails(Game_ID),
-[Rank] INT
+Rating INT
 );
 
 CREATE TABLE GlobalLeaderBoard 
