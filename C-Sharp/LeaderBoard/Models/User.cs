@@ -14,6 +14,7 @@ namespace LeaderBoard.Models
         public string Email { get; set; }
         public string PhoneNo { get; set; }
         public string UtID { get; set; }
+        public decimal? Rating { get; set; }
         public bool ValidateEmail()
                     {
             try
