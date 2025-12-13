@@ -17,7 +17,7 @@ namespace LeaderBoard.Data
         public int Insert(User user)
         {
             const string sql = @"
-                INSERT INTO Players (UserName, Email, PhoneNo, UtID)
+                INSERT INTO [User] (UserName, Email, PhoneNo, UtID)
                 VALUES (@UserName, @Email, @PhoneNo, @UtID);
                 SELECT CAST(SCOPE_IDENTITY() as int);
             ";
@@ -33,7 +33,7 @@ namespace LeaderBoard.Data
         {
             const string sql = @"
                 SELECT UserID, UserName, Email, PhoneNo, UtID
-                FROM Players
+                FROM [User]
                 WHERE UserID = @UserID;
             ";
             using var rdr = _db.ExecuteReader(sql, new { UserID = userId });
@@ -54,7 +54,7 @@ namespace LeaderBoard.Data
         {
             const string sql = @"
                 SELECT UserID, UserName, Email, PhoneNo, UtID
-                FROM Players
+                FROM [User]
                 ORDER BY UserName;
             ";
             var list = new List<User>();
@@ -75,7 +75,7 @@ namespace LeaderBoard.Data
         public bool Update(User user)
         {
             const string sql = @"
-                UPDATE Players
+                UPDATE [User]
                 SET UserName = @UserName,
                     Email = @Email,
                     PhoneNo = @PhoneNo,
@@ -94,7 +94,7 @@ namespace LeaderBoard.Data
         public bool Delete(int userId)
         {
             const string sql = @"
-                DELETE FROM Players
+                DELETE FROM [User]
                 WHERE UserID = @UserID;
             ";
             return _db.ExecuteNonQuery(sql, new { UserID = userId }) > 0;
@@ -107,7 +107,7 @@ namespace LeaderBoard.Data
             {
                 sql = @"
                     SELECT COUNT(1)
-                    FROM Players
+                    FROM [User]
                     WHERE Email = @Email AND UserID <> @ExcludeID;
                 ";
                 param = new { Email = email, ExcludeID = excludeId.Value };
@@ -116,7 +116,7 @@ namespace LeaderBoard.Data
             {
                 sql = @"
                     SELECT COUNT(1)
-                    FROM Players
+                    FROM [User]
                     WHERE Email = @Email;
                 ";
                 param = new { Email = email };

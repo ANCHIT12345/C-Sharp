@@ -6,10 +6,12 @@ CREATE TABLE [User]
 UserID INT PRIMARY KEY IDENTITY(1,1),
 UserName VARCHAR(50),
 Email VARCHAR(254),
-CONSTRAINT chkEmail CHECK(Email LIKE('___%@_.__')),
+CONSTRAINT chkEmail CHECK(Email LIKE('___%@_%.__%')),
 PhoneNo INT,
 UtID VARCHAR(10) REFERENCES UserType(UtID)
 );
+
+ALTER TABLE [User] ADD CONSTRAINT chkEmail CHECK(Email LIKE('___%@_%.__%'));
 
 CREATE TABLE UserType
 (
