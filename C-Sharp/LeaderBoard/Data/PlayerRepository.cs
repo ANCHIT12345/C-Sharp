@@ -36,21 +36,19 @@ namespace LeaderBoard.Data
                 FROM Players
                 WHERE UserID = @UserID;
             ";
-            return _db.ExecuteReader(sql, new { UserID = userId }, reader =>
+            using var rdr = _db.ExecuteReader(sql, new { UserID = userId });
+            if (rdr.Read())
             {
-                if (reader.Read())
+                return new User
                 {
-                    return new User
-                    {
-                        UserID = reader.GetInt32(0),
-                        UserName = reader.GetString(1),
-                        Email = reader.GetString(2),
-                        PhoneNo = reader.GetString(3),
-                        UtID = reader.GetString(4)
-                    };
-                }
-                return null;
-            });
+                    UserID = rdr.GetInt32(0),
+                    UserName = rdr.IsDBNull(1) ? null : rdr.GetString(1),
+                    Email = rdr.IsDBNull(2) ? null : rdr.GetString(2),
+                    PhoneNo = rdr.IsDBNull(3) ? null : rdr.GetString(3),
+                    UtID = rdr.IsDBNull(4) ? null : rdr.GetString(4)
+                };
+            }
+            return null;
         }
         public List<User> GetAll()
         {
@@ -125,5 +123,11 @@ namespace LeaderBoard.Data
             }
             return _db.ExecuteScalar<int>(sql, param) > 0;
         }
+        public bool UpdateRating(int userId, decimal newRating)
+        {
+            const string sql = "UPDATE [User] SET Rating = @Rating WHERE UserID = @UserId;";
+            return _db.ExecuteNonQuery(sql, new { Rating = newRating, UserId = userId }) > 0;
+        }
+
     }
 }

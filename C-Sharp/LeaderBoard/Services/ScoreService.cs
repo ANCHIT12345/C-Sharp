@@ -1,17 +1,26 @@
-﻿using System;
+﻿using LeaderBoard.Data;
+using LeaderBoard.Models;
+using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Data;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using LeaderBoard.Models;
-using LeaderBoard.Data;
-using System.Collections.Concurrent;
+using System.Threading.Tasks;
 
 namespace LeaderBoard.Services
 {
+    public class ScoreJsonDto
+    {
+        public int GameId { get; set; }
+        public int PlayerId { get; set; }
+        public string PlayerName { get; set; }
+        public decimal PointsReceived { get; set; }
+        public DateTime DateTime { get; set; }
+    }
     public class ScoreService : IScoreService
     {
         private readonly IRepository _repo;
@@ -129,6 +138,109 @@ namespace LeaderBoard.Services
                 await Task.WhenAll(task).ConfigureAwait(false);
             }
         }
+        public int ImportScoresFromJsonAndProcess(string jsonPath)
+        {
+            if (string.IsNullOrWhiteSpace(jsonPath))
+                throw new ArgumentException("JSON path is required");
+
+            if (!File.Exists(jsonPath))
+                throw new FileNotFoundException("JSON file not found", jsonPath);
+
+            var json = File.ReadAllText(jsonPath);
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+
+            var items = JsonSerializer.Deserialize<List<ScoreJsonDto>>(json, options);
+            if (items == null || items.Count == 0)
+                return 0;
+
+            int inserted = 0;
+
+            foreach (var dto in items)
+            {
+                var score = new Score
+                {
+                    PlayerId = dto.PlayerId,
+                    ContestId = dto.GameId, 
+                    Points = dto.PointsReceived,
+                    SubmittedAt = dto.DateTime
+                };
+
+                if (SubmitScore(score))
+                    inserted++;
+            }
+            RecalculateGlobalLeaderboard();
+            RecalculateContestLeaderboards();
+
+            return inserted;
+        }
+        private void RecalculateGlobalLeaderboard()
+        {
+            lock (_rankLock)
+            {
+                const string sql = @"
+            WITH Ranked AS (
+                SELECT PlayerID,
+                       SUM(Score) AS TotalPoints,
+                       DENSE_RANK() OVER (ORDER BY SUM(Score) DESC) AS RankVal
+                FROM PlayerScore
+                GROUP BY PlayerID
+            )
+            MERGE GlobalLeaderBoard AS t
+            USING Ranked AS s
+            ON t.PlayerID = s.PlayerID
+            WHEN MATCHED THEN
+              UPDATE SET TotalPoints = s.TotalPoints, Rank = s.RankVal
+            WHEN NOT MATCHED THEN
+              INSERT (PlayerID, TotalPoints, Rank)
+              VALUES (s.PlayerID, s.TotalPoints, s.RankVal);
+        ";
+
+                _repo.ExecuteNonQuery(sql);
+            }
+        }
+        private void RecalculateContestLeaderboards()
+        {
+            lock (_rankLock)
+            {
+                const string sql = @"
+            WITH Ranked AS (
+                SELECT PlayerID,
+                       GameID,
+                       SUM(Score) AS TotalPoints,
+                       DENSE_RANK() OVER (PARTITION BY GameID ORDER BY SUM(Score) DESC) AS RankVal
+                FROM PlayerScore
+                WHERE GameID IS NOT NULL
+                GROUP BY PlayerID, GameID
+            )
+            MERGE ContestLeaderBoard AS t
+            USING Ranked AS s
+            ON t.PlayerID = s.PlayerID AND t.ContestID = s.GameID
+            WHEN MATCHED THEN
+              UPDATE SET TotalPoints = s.TotalPoints, Rank = s.RankVal
+            WHEN NOT MATCHED THEN
+              INSERT (PlayerID, ContestID, TotalPoints, Rank)
+              VALUES (s.PlayerID, s.GameID, s.TotalPoints, s.RankVal);
+        ";
+
+                _repo.ExecuteNonQuery(sql);
+            }
+        }
+        private void UpdatePlayerRatings()
+        {
+            const string sql = @"
+        UPDATE U
+        SET Rating = ISNULL(Rating, 1000) + (100 - (GLB.Rank * 10))
+        FROM [User] U
+        JOIN GlobalLeaderBoard GLB ON GLB.PlayerID = U.UserID;
+    ";
+
+            _repo.ExecuteNonQuery(sql);
+        }
+
+
 
         public Task SimulatePlayerScoreAsync(int contestId, int[] playerIds, int submissionsPerPlayer = 5, int maxDegreeOfParallelism = 10)
         {

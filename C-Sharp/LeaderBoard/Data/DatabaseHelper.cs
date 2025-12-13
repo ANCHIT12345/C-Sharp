@@ -59,7 +59,7 @@ namespace LeaderBoard.Data
                 return (T)Convert.ChangeType(result, typeof(T));
             }
         }
-        public IDataReader ExecuteReader(string sql, object parameters = null)
+        public IDataReader ExecuteReader(string sql, object parameters = null, Func<object, Models.User> value = null)
         {
             var cmd = CreateCommand(sql, parameters);
             return cmd.ExecuteReader(CommandBehavior.CloseConnection);

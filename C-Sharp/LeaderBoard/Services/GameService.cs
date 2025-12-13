@@ -1,7 +1,9 @@
 ﻿using LeaderBoard.Models;
-using LeaderboardApp.Data;
+using LeaderBoard.Data;
 using System;
 using System.Collections.Generic;
+using Leaderboard.Data;
+using Leaderboard.Models;
 
 namespace LeaderboardApp.Services
 {
@@ -20,7 +22,6 @@ namespace LeaderboardApp.Services
         public bool UpdateGame(Game g) => _repo.Update(g);
         public bool DeleteGame(int id) => _repo.Delete(id);
 
-        // Import games from JSON file and upsert to DB
         public int ImportGamesFromJson(string jsonFilePath) => _repo.ImportFromJsonFile(jsonFilePath);
     }
 }
