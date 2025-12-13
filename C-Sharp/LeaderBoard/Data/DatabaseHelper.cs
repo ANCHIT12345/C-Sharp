@@ -26,9 +26,12 @@ namespace LeaderBoard.Data
                 return _connection;
             }
         }
-        public DatabaseHelper(string connectionString)
+
+        IDbConnection IRepository.Connection => throw new NotImplementedException();
+
+        public DatabaseHelper()
         {
-            _connectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString));
+            _connectionString = "Data Source=LAPTOP-TH0TP9P1\\SQLEXPRESS;Initial Catalog=LeaderBoardSystem;Trusted_Connection=True;";
         }
         public void Dispose()
         {
@@ -94,6 +97,46 @@ namespace LeaderBoard.Data
         {
             try { tx?.Rollback(); } catch { }
             tx?.Dispose();
+        }
+
+        bool IRepository.ExecuteInsert(string sql, object parameters)
+        {
+            throw new NotImplementedException();
+        }
+
+        int IRepository.ExecuteNonQuery(string sql, object parameters)
+        {
+            throw new NotImplementedException();
+        }
+
+        T IRepository.ExecuteScalar<T>(string sql, object parameters)
+        {
+            throw new NotImplementedException();
+        }
+
+        IDataReader IRepository.ExecuteReader(string sql, object parameters)
+        {
+            throw new NotImplementedException();
+        }
+
+        IDbTransaction IRepository.BeginTransaction()
+        {
+            throw new NotImplementedException();
+        }
+
+        void IRepository.CommitTransaction(IDbTransaction tx)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IRepository.RollbackTransaction(IDbTransaction tx)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IDisposable.Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 }

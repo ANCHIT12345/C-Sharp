@@ -1,17 +1,18 @@
-﻿using System;
+﻿// Program.cs snippet for using LeaderboardService:
 using LeaderBoard.Data;
 using LeaderBoard.Services;
 using LeaderBoard.Models;
-using System.Threading.Tasks;
 using LeaderBoard.Presentation;
-
-namespace Leaderboard
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+namespace LeaderBoard
 {
-    internal class Program
+    class Program
     {
-        static void Main(String[] args)
+        static async Task Main(string[] args)
         {
             presentation.uiDisplay();
-        }        
+        }
     }
 }

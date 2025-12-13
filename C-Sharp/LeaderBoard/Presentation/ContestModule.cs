@@ -1,9 +1,9 @@
-﻿using LeaderBoard.Models;
-using LeaderboardApp.Models;
-using LeaderboardApp.Services;
+﻿using Leaderboard.Models;
+using Leaderboard.Services;
+using LeaderBoard.Models;
 using System;
 
-namespace LeaderboardApp.UI
+namespace Leaderboard.UI
 {
     public class ContestModule
     {

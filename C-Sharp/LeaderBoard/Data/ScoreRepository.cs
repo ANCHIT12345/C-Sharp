@@ -1,12 +1,11 @@
 ﻿using LeaderBoard.Data;
-using LeaderboardApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Text.Json;
 
-namespace LeaderboardApp.Data
+namespace Leaderboard.Data
 {
     public class ScoreRepository
     {

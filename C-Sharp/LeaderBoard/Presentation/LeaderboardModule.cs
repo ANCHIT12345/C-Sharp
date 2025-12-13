@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using LeaderboardApp.Services;
+using Leaderboard.Services;
 
-namespace LeaderboardApp.UI
+
+namespace Leaderboard.UI
 {
     public class LeaderboardModule
     {

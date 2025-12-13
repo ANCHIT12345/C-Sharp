@@ -12,10 +12,12 @@ namespace LeaderBoard.Services
     public class PlayerService : IPlayerService
     {
         private readonly PlayerRepository _repo;
-        public PlayerService(PlayerRepository repository)
+        public PlayerService()
         {
-            _repo = repository ?? throw new ArgumentNullException(nameof(repository));
+            _repo = new PlayerRepository();
         }
+
+
         public int CreatePlayer(User user)
         {
             if (user == null) throw new ArgumentNullException(nameof(user));

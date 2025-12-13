@@ -1,9 +1,10 @@
 ﻿using LeaderBoard.Models;
-using LeaderboardApp.Services;
+using Leaderboard.Services;
 using System;
 using System.Linq;
+using Leaderboard.Models;
 
-namespace LeaderboardApp.UI
+namespace Leaderboard.UI
 {
     public class GameModule
     {

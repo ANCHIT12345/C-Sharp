@@ -1,10 +1,9 @@
 ﻿using LeaderBoard.Models;
-using LeaderboardApp.Models;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace LeaderboardApp.Services
+namespace Leaderboard.Services
 {
     public interface ILeaderboardService
     {

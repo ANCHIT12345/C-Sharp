@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using Leaderboard.Data;
 using Leaderboard.Models;
 
-namespace LeaderboardApp.Services
+namespace Leaderboard.Services
 {
     public class GameService
     {

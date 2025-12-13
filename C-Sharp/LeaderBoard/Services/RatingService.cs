@@ -1,11 +1,9 @@
 ﻿using LeaderBoard.Data;
 using LeaderBoard.Models;
-using LeaderboardApp.Data;
-using LeaderboardApp.Models;
 using System;
 using System.Collections.Generic;
 
-namespace LeaderboardApp.Services
+namespace Leaderboard.Services
 {
     public class RatingService
     {

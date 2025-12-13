@@ -10,9 +10,9 @@ namespace LeaderBoard.Data
     public class PlayerRepository
     {
         private readonly DatabaseHelper _db;
-        public PlayerRepository(DatabaseHelper db)
+        public PlayerRepository()
         {
-            _db = db ?? throw new ArgumentNullException(nameof(db));
+            _db = new DatabaseHelper();
         }
         public int Insert(User user)
         {

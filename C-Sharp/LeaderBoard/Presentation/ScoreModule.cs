@@ -1,8 +1,7 @@
 ﻿using LeaderBoard.Services;
-using LeaderboardApp.Services;
 using System;
 
-namespace LeaderboardApp.UI
+namespace Leaderboard.UI
 {
     public class ScoreModule
     {

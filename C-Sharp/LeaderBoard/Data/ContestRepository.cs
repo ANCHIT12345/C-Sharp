@@ -1,6 +1,5 @@
-﻿using LeaderBoard.Data;
-using LeaderBoard.Models;
-using LeaderboardApp.Models;
+﻿using Leaderboard.Models;
+using LeaderBoard.Data;
 using System;
 using System.Collections.Generic;
 
@@ -119,7 +118,7 @@ namespace Leaderboard.Data
                 WHERE ContestStartDate <= @Now AND ContestEndDate >= @Now;
             ";
             var list = new List<Contest>();
-            using var rdr = _db.ExecuteReader(sql, new { Now = now.Date }) // adjust if time-of-day needed
+            using var rdr = _db.ExecuteReader(sql, new { Now = now.Date }); // adjust if time-of-day needed
             {
                 while (rdr.Read())
                 {

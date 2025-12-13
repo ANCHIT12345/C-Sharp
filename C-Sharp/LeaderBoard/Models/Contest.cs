@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LeaderboardApp.Models
+namespace Leaderboard.Models
 {
     public class Contest
     {

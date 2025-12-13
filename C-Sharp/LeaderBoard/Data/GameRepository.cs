@@ -180,5 +180,3 @@ namespace Leaderboard.Data
         }
     }
 }
-    }
-}

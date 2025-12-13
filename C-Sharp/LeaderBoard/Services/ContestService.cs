@@ -1,10 +1,10 @@
 ﻿using LeaderBoard.Models;
-using LeaderboardApp.Data;
-using LeaderboardApp.Models;
+using Leaderboard.Data;
+using Leaderboard.Models;
 using System;
 using System.Collections.Generic;
 
-namespace LeaderboardApp.Services
+namespace Leaderboard.Services
 {
     public class ContestService
     {
