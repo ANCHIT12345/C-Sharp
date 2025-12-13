@@ -44,8 +44,8 @@ namespace LeaderBoard.Data
                     UserID = rdr.GetInt32(0),
                     UserName = rdr.IsDBNull(1) ? null : rdr.GetString(1),
                     Email = rdr.IsDBNull(2) ? null : rdr.GetString(2),
-                    PhoneNo = rdr.IsDBNull(3) ? null : rdr.GetString(3),
-                    UtID = rdr.IsDBNull(4) ? null : rdr.GetString(4)
+                    PhoneNo = rdr.IsDBNull(3) ? null : rdr.GetValue(3)?.ToString(),
+                    UtID = rdr.IsDBNull(4) ? null : rdr.GetValue(4)?.ToString()
                 };
             }
             return null;
