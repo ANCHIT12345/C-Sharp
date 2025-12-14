@@ -14,9 +14,9 @@ namespace Leaderboard.Data
     {
         private readonly DatabaseHelper _db;
 
-        public GameRepository(DatabaseHelper db)
+        public GameRepository()
         {
-            _db = db ?? throw new ArgumentNullException(nameof(db));
+            _db = new DatabaseHelper();
         }
 
         public int Insert(Game game)

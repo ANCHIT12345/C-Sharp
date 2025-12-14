@@ -8,9 +8,9 @@ namespace Leaderboard.Services
     public class RatingService
     {
         private readonly PlayerRepository _playerRepo;
-        public RatingService(PlayerRepository playerRepo)
-        {
-            _playerRepo = playerRepo ?? throw new ArgumentNullException(nameof(playerRepo));
+        public RatingService()
+        { 
+            _playerRepo = new PlayerRepository();
         }
         public void UpdateRatingsForContest(List<ContestLeaderrBoard> leaderboardRows)
         {

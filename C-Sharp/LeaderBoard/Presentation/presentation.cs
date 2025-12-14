@@ -1,4 +1,7 @@
-﻿using System;
+﻿using LeaderBoard.Services;
+using LeaderBoard.Models;
+using LeaderBoard.Presentation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,25 +21,27 @@ namespace LeaderBoard.Presentation
                 Console.WriteLine("1. Manage Games");
                 Console.WriteLine("2. Manage Players");
                 Console.WriteLine("3. Manage Contests");
-                Console.WriteLine("4. Submit Score (Manual)");
-                Console.WriteLine("5. Simulate Player Scores (Multi-threaded)");
-                Console.WriteLine("6. Generate Leaderboard");
-                Console.WriteLine("7. Export Leaderboard to CSV");
-                Console.WriteLine("8. Start Scheduler (Auto Contest Start/End)");
+                Console.WriteLine("4. Manage Leaderboard");
+                Console.WriteLine("5. Submit Score (Manual)");
+                //Console.WriteLine("5. Simulate Player Scores (Multi-threaded)");
+                //Console.WriteLine("6. Generate Leaderboard");
+                //Console.WriteLine("7. Export Leaderboard to CSV");
+                //Console.WriteLine("8. Start Scheduler (Auto Contest Start/End)");
                 Console.WriteLine("9. Exit");
                 Console.Write("Enter option: ");
                 switch (Console.ReadLine())
                 {
                     case "1":
+                        GameModule.ManageGames();
                         break;
                     case "2":
                         PlayerModule.ManagePlayers();
                         break;
                     case "3":
-                        // Call method to manage contests
+                        ContestModule.ManageContests();
                         break;
                     case "4":
-                        // Call method to submit score manually
+                        LeaderboardModule.ManageLeaderbord();
                         break;
                     case "5":
                         // Call method to simulate player scores

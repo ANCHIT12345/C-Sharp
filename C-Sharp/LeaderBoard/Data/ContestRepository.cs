@@ -8,7 +8,9 @@ namespace Leaderboard.Data
     public class ContestRepository
     {
         private readonly DatabaseHelper _db;
-        public ContestRepository(DatabaseHelper db) { _db = db ?? throw new ArgumentNullException(nameof(db)); }
+        public ContestRepository() {
+            _db = new DatabaseHelper();
+        }
 
         public int Insert(Contest contest)
         {

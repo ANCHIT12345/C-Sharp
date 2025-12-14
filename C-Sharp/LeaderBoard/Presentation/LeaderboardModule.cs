@@ -4,20 +4,20 @@ using System.Threading.Tasks;
 using Leaderboard.Services;
 
 
-namespace Leaderboard.UI
+namespace LeaderBoard.Presentation
 {
     public class LeaderboardModule
     {
         private readonly LeaderboardService _leaderboardService;
         private readonly RatingService _ratingService;
 
-        public LeaderboardModule(LeaderboardService leaderboardService, RatingService ratingService)
+        public LeaderboardModule()
         {
-            _leaderboardService = leaderboardService ?? throw new ArgumentNullException(nameof(leaderboardService));
-            _ratingService = ratingService ?? throw new ArgumentNullException(nameof(ratingService));
+            _leaderboardService = new LeaderboardService();
+            _ratingService = new RatingService();
         }
 
-        public void Run()
+        public static void ManageLeaderbord()
         {
             while (true)
             {
@@ -33,13 +33,27 @@ namespace Leaderboard.UI
                 var c = Console.ReadLine();
                 switch (c)
                 {
-                    case "1": GenerateAndDisplay(); break;
-                    case "2": Export(); break;
-                    case "3": GenerateAndUpdateRatings(); break;
-                    case "4": StartPeriodicRefresh(); break;
-                    case "5": StopPeriodicRefresh(); break;
-                    case "6": return;
-                    default: Console.WriteLine("Invalid"); Pause(); break;
+                    case "1":
+                        new LeaderboardModule().GenerateAndDisplay();
+                        break;
+                    case "2":
+                        new LeaderboardModule().Export();
+                        break;
+                    case "3":
+                        new LeaderboardModule().GenerateAndUpdateRatings();
+                        break;
+                    case "4":
+                        new LeaderboardModule().StartPeriodicRefresh();
+                        break;
+                    case "5":
+                        new LeaderboardModule().StopPeriodicRefresh();
+                        break;
+                    case "6":
+                        return;
+                    default:
+                        Console.WriteLine("Invalid choice.");
+                        Pause();
+                        break;
                 }
             }
         }

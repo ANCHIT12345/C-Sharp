@@ -1,4 +1,5 @@
 ﻿// Services/LeaderboardService.cs
+using Leaderboard.Data;
 using LeaderBoard.Data;
 using LeaderBoard.Models;
 using System;
@@ -14,23 +15,18 @@ namespace Leaderboard.Services
 {
     public class LeaderboardService : ILeaderboardService
     {
-        private readonly IRepository _repo;
+        private readonly DatabaseHelper _repo;
 
-        public LeaderboardService(IRepository repo)
+        // Replace the default constructor to accept an IRepository implementation via dependency injection
+        public LeaderboardService()
         {
-            _repo = repo ?? throw new ArgumentNullException(nameof(repo));
+            _repo = new DatabaseHelper();
         }
 
-        /// <summary>
-        /// Generate leaderboard by aggregating PlayerScore rows for a contest.
-        /// Persist results to ContestLeaderBoard and GlobalLeaderBoard (upsert).
-        /// Returns ordered list of ContestLeaderBoard rows (rank assigned).
-        /// </summary>
         public List<ContestLeaderrBoard> GenerateLeaderboard(int contestId)
         {
             if (contestId <= 0) throw new ArgumentException(nameof(contestId));
 
-            // Step 1: aggregate scores per player for this contest
             const string aggregateSql = @"
                 SELECT PlayerID, SUM(Score) AS TotalPoints
                 FROM PlayerScore
@@ -39,8 +35,6 @@ namespace Leaderboard.Services
                 GROUP BY PlayerID
                 ORDER BY TotalPoints DESC;
             ";
-            // Note: If PlayerScore table doesn't have ContestID column in your actual schema,
-            // switch WHERE clause to use ContestId mapping column you use.
 
             var rows = new List<(int PlayerID, decimal TotalPoints)>();
             using (var rdr = _repo.ExecuteReader(aggregateSql, new { ContestId = contestId }))
@@ -54,7 +48,6 @@ namespace Leaderboard.Services
                 rdr.Close();
             }
 
-            // Step 2: assign ranks (dense rank ordering) and upsert into ContestLeaderBoard
             var leaderboardRows = new List<ContestLeaderrBoard>();
 
             int rank = 0;

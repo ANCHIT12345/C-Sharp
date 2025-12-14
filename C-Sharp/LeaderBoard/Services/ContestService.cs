@@ -9,7 +9,9 @@ namespace Leaderboard.Services
     public class ContestService
     {
         private readonly ContestRepository _repo;
-        public ContestService(ContestRepository repo) { _repo = repo ?? throw new ArgumentNullException(nameof(repo)); }
+        public ContestService() { 
+            _repo = new ContestRepository();
+        }
 
         public int CreateContest(Contest c) => _repo.Insert(c);
         public bool UpdateContest(Contest c) => _repo.Update(c);

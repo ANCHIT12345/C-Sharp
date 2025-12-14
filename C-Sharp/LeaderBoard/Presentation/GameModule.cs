@@ -4,17 +4,17 @@ using System;
 using System.Linq;
 using Leaderboard.Models;
 
-namespace Leaderboard.UI
+namespace LeaderBoard.Presentation
 {
     public class GameModule
     {
         private readonly GameService _gameService;
         public GameModule(GameService gameService)
         {
-            _gameService = gameService ?? throw new ArgumentNullException(nameof(gameService));
+            _gameService = gameService;
         }
 
-        public void Run()
+        public static void ManageGames()
         {
             while (true)
             {
@@ -32,13 +32,47 @@ namespace Leaderboard.UI
                 {
                     switch (c)
                     {
-                        case "1": ListGames(); break;
-                        case "2": ImportGames(); break;
-                        case "3": CreateGame(); break;
-                        case "4": UpdateGame(); break;
-                        case "5": DeleteGame(); break;
-                        case "6": return;
-                        default: Console.WriteLine("Invalid choice."); Pause(); break;
+                        case "1":
+                            {
+                                var gm = new GameService();
+                                var module = new GameModule(gm);
+                                module.ListGames();
+                                break;
+                            }
+                        case "2":
+                            {
+                                var gm = new GameService();
+                                var module = new GameModule(gm);
+                                module.ImportGames();
+                                break;
+                            }
+                        case "3":
+                            {
+                                var gm = new GameService();
+                                var module = new GameModule(gm);
+                                module.CreateGame();
+                                break;
+                            }
+                        case "4":
+                            {
+                                var gm = new GameService();
+                                var module = new GameModule(gm);
+                                module.UpdateGame();
+                                break;
+                            }
+                        case "5":
+                            {
+                                var gm = new GameService();
+                                var module = new GameModule(gm);
+                                module.DeleteGame();
+                                break;
+                            }
+                        case "6":
+                            return;
+                        default: 
+                            Console.WriteLine("Invalid choice."); 
+                            Pause();
+                            break;
                     }
                 }
                 catch (Exception ex)

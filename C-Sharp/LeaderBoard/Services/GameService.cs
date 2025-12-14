@@ -11,9 +11,9 @@ namespace Leaderboard.Services
     {
         private readonly GameRepository _repo;
 
-        public GameService(GameRepository repo)
+        public GameService()
         {
-            _repo = repo ?? throw new ArgumentNullException(nameof(repo));
+            _repo = new GameRepository();
         }
 
         public List<Game> GetAllGames() => _repo.GetAll();

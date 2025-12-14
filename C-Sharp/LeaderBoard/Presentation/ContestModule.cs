@@ -3,14 +3,14 @@ using Leaderboard.Services;
 using LeaderBoard.Models;
 using System;
 
-namespace Leaderboard.UI
+namespace LeaderBoard.Presentation
 {
     public class ContestModule
     {
         private readonly ContestService _contestService;
         public ContestModule(ContestService contestService) { _contestService = contestService; }
 
-        public void Run()
+        public static void ManageContests()
         {
             while (true)
             {
@@ -28,13 +28,47 @@ namespace Leaderboard.UI
                 {
                     switch (c)
                     {
-                        case "1": ListAll(); break;
-                        case "2": Create(); break;
-                        case "3": Update(); break;
-                        case "4": Delete(); break;
-                        case "5": ListActive(); break;
-                        case "6": return;
-                        default: Console.WriteLine("Invalid"); Pause(); break;
+                        case "1":
+                            {
+                                var cs = new ContestService();
+                                var module = new ContestModule(cs);
+                                module.ListAll();
+                                break;
+                            }
+                        case "2":
+                            {
+                                var cs = new ContestService();
+                                var module = new ContestModule(cs);
+                                module.Create();
+                                break;
+                            }
+                        case "3":
+                            {
+                                var cs = new ContestService();
+                                var module = new ContestModule(cs);
+                                module.Update();
+                                break;
+                            }
+                        case "4":
+                            {
+                                var cs = new ContestService();
+                                var module = new ContestModule(cs);
+                                module.Delete();
+                                break;
+                            }
+                        case "5":
+                            {
+                                var cs = new ContestService();
+                                var module = new ContestModule(cs);
+                                module.ListActive();
+                                break;
+                            }
+                        case "6":
+                            return;
+                        default:
+                            Console.WriteLine("Invalid choice.");
+                            Pause();
+                            break;
                     }
                 }
                 catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); Pause(); }
