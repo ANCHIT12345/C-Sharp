@@ -65,13 +65,13 @@ City VARCHAR(100),
 )
 
 CREATE TABLE PlayerScore
-(
+(	
 ScoreID INT PRIMARY KEY IDENTITY(1,1),
 PlayerID INT REFERENCES [User](UserID),
 Score DECIMAL(10,2),
 GameID INT REFERENCES GameDetails(Game_ID),
-Rating INT
 );
+
 
 CREATE TABLE GlobalLeaderBoard 
 (

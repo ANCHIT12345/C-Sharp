@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace LeaderBoard.Models
         public int PlayerId { get; set; }
         public int ContestId { get; set; }
         public decimal Points { get; set; }
-        public DateTime SubmittedAt { get; set; } = DateTime.UtcNow;
+
         public bool Validate() => Points >= 0;
     }
 }

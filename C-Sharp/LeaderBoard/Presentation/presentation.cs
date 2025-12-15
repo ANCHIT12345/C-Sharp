@@ -44,7 +44,8 @@ namespace LeaderBoard.Presentation
                         LeaderboardModule.ManageLeaderbord();
                         break;
                     case "5":
-                        // Call method to simulate player scores
+                        var scoreModule = new ScoreModule();
+                        scoreModule.ManageScore();
                         break;
                     case "6":
                         // Call method to generate leaderboard

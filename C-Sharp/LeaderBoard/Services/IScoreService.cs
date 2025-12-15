@@ -9,7 +9,6 @@ namespace LeaderBoard.Services
 {
     public interface IScoreService
     {
-        bool SubmitScore(Score score);
-        Task SimulatePlayerScoreAsync(int contestId, int[] playerIds, int submissionsPerPlayer = 5, int maxDegreeOfParallelism = 10);
+        int SubmitScore(Score score);
     }
 }

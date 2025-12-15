@@ -10,16 +10,17 @@ namespace Leaderboard.Data
     public class ScoreRepository
     {
         private readonly DatabaseHelper _db;
+        private readonly object _rankLock;
 
-        public ScoreRepository(DatabaseHelper db)
+        public ScoreRepository()
         {
-            _db = db ?? throw new ArgumentNullException(nameof(db));
+            _db = new DatabaseHelper();
         }
-        public int InsertScore(int playerId, decimal pointsReceived, int? gameId, DateTime eventAt, string dataJson = null, int? ratingSnapshot = null)
+        public int InsertScore(int playerId, decimal pointsReceived, int? gameId)
         {
             const string sql = @"
-                INSERT INTO PlayerScore (PlayerID, Score, GameID, EventAt, DataJson, Rating)
-                VALUES (@PlayerID, @Score, @GameID, @EventAt, @DataJson, @Rating);
+                INSERT INTO PlayerScore (PlayerID, Score, GameID)
+                VALUES (@PlayerID, @Score, @GameID);
                 SELECT CAST(SCOPE_IDENTITY() AS INT);
             ";
 
@@ -27,10 +28,7 @@ namespace Leaderboard.Data
             {
                 PlayerID = playerId,
                 Score = pointsReceived,
-                GameID = gameId,
-                EventAt = eventAt,
-                DataJson = (object)dataJson ?? DBNull.Value,
-                Rating = (object)ratingSnapshot ?? DBNull.Value
+                GameID = gameId
             });
         }
         public int BulkInsertFromJsonFile(string jsonFilePath)
@@ -50,7 +48,7 @@ namespace Leaderboard.Data
                     foreach (var dto in list)
                     {
                         var dataJson = JsonSerializer.Serialize(dto); // store raw event for audit if needed
-                        var id = InsertScore(dto.PlayerId, dto.PointsReceived, dto.GameId == 0 ? (int?)null : dto.GameId, dto.EventAt ?? DateTime.UtcNow, dataJson, null);
+                        var id = InsertScore(dto.PlayerId, dto.PointsReceived, dto.GameId == 0 ? (int?)null : dto.GameId);
                         if (id > 0) inserted++;
                     }
                     _db.CommitTransaction(tx);
@@ -111,8 +109,68 @@ namespace Leaderboard.Data
     ";
             _db.ExecuteNonQuery(sql, new { PlayerId = playerId, TotalPoints = totalPoints });
         }
+        public void RecalculateGlobalLeaderboard()
+        {
+            lock (_rankLock)
+            {
+                const string sql = @"
+                    WITH Ranked AS (
+                        SELECT PlayerID,
+                               SUM(Score) AS TotalPoints,
+                               DENSE_RANK() OVER (ORDER BY SUM(Score) DESC) AS RankVal
+                        FROM PlayerScore
+                        GROUP BY PlayerID
+                    )
+                    MERGE GlobalLeaderBoard AS t
+                    USING Ranked AS s
+                    ON t.PlayerID = s.PlayerID
+                    WHEN MATCHED THEN
+                      UPDATE SET TotalPoints = s.TotalPoints, Rank = s.RankVal
+                    WHEN NOT MATCHED THEN
+                      INSERT (PlayerID, TotalPoints, Rank)
+                      VALUES (s.PlayerID, s.TotalPoints, s.RankVal);
+                ";
+                _db.ExecuteNonQuery(sql);
+            }
+        }
+        public void RecalculateContestLeaderboards()
+        {
+            lock (_rankLock)
+            {
+                const string sql = @"
+                    WITH Ranked AS (
+                        SELECT PlayerID,
+                               GameID,
+                               SUM(Score) AS TotalPoints,
+                               DENSE_RANK() OVER (PARTITION BY GameID ORDER BY SUM(Score) DESC) AS RankVal
+                        FROM PlayerScore
+                        WHERE GameID IS NOT NULL
+                        GROUP BY PlayerID, GameID
+                    )
+                    MERGE ContestLeaderBoard AS t
+                    USING Ranked AS s
+                    ON t.PlayerID = s.PlayerID AND t.ContestID = s.GameID
+                    WHEN MATCHED THEN
+                      UPDATE SET TotalPoints = s.TotalPoints, Rank = s.RankVal
+                    WHEN NOT MATCHED THEN
+                      INSERT (PlayerID, ContestID, TotalPoints, Rank)
+                      VALUES (s.PlayerID, s.GameID, s.TotalPoints, s.RankVal);
+                ";
 
+                _db.ExecuteNonQuery(sql);
+            }
+        }
+        public void UpdatePlayerRatings()
+        {
+            const string sql = @"
+                UPDATE P
+                SET Rating = ISNULL(Rating, 1000) + (100 - (GLB.Rank * 10))
+                FROM PlayerScore P
+                JOIN GlobalLeaderBoard GLB ON GLB.PlayerID = P.UserID;
+            ";
 
+            _db.ExecuteNonQuery(sql);
+        }
     }
     public class ScoreEventDto
     {
