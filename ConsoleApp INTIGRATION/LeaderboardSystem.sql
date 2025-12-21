@@ -19,6 +19,8 @@ UtID VARCHAR(10) PRIMARY KEY,
 UserType VARCHAR(15)
 );
 
+SELECT * FROM UserType;
+
 CREATE TABLE GameDetails
 (
 Game_ID INT PRIMARY KEY IDENTITY(1,1),
@@ -33,6 +35,10 @@ BestTime VARCHAR(10),
 CtID VARCHAR(10) REFERENCES ContestType(CtID),
 LtID INT REFERENCES LocationContest(LtID)
 );
+
+
+
+
 
 CREATE TABLE Contest
 (
@@ -54,6 +60,8 @@ CtID VARCHAR(10) PRIMARY KEY,
 ContestType VARCHAR(25)
 );
 
+INSERT INTO ContestType(CtID, ContestType) VALUES('CT01','Global'),('CT02','Country'),('CT03','State');
+
 CREATE TABLE LocationContest
 (
 LtID INT PRIMARY KEY IDENTITY(1,1),
@@ -63,6 +71,24 @@ Country VARCHAR(60),
 City VARCHAR(100),
 [Address] VARCHAR(250)
 )
+
+--INSERT INTO LocationContest (Continent, Country, [State], City, [Address]) VALUES
+--('Asia', 'India', 'Maharashtra', 'Mumbai', 'Andheri East, Mumbai 400069'),
+--('Asia', 'India', 'Karnataka', 'Bengaluru', 'Whitefield Main Road'),
+--('Asia', 'India', 'Delhi', 'New Delhi', 'Connaught Place'),
+--('Asia', 'Japan', 'Tokyo', 'Tokyo', 'Shibuya Crossing'),
+--('Asia', 'China', 'Beijing', 'Beijing', 'Haidian District'),
+--('Europe', 'United Kingdom', 'England', 'London', '221B Baker Street'),
+--('Europe', 'Germany', 'Bavaria', 'Munich', 'Marienplatz 1'),
+--('Europe', 'France', 'Île-de-France', 'Paris', 'Champs-Élysées'),
+--('Europe', 'Netherlands', 'North Holland', 'Amsterdam', 'Dam Square'),
+--('North America', 'United States', 'California', 'San Francisco', 'Market Street'),
+--('North America', 'United States', 'New York', 'New York City', 'Times Square'),
+--('North America', 'Canada', 'Ontario', 'Toronto', 'Bay Street'),
+--('South America', 'Brazil', 'São Paulo', 'São Paulo', 'Paulista Avenue'),
+--('Africa', 'South Africa', 'Gauteng', 'Johannesburg', 'Sandton City'),
+--('Australia', 'Australia', 'New South Wales', 'Sydney', 'George Street');
+
 
 CREATE TABLE PlayerScore
 (	

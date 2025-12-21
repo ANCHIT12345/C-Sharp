@@ -41,7 +41,7 @@ namespace Leaderboard.Data
             if (list == null || list.Count == 0) return 0;
 
             int inserted = 0;
-            using (var tx = _db.BeginTransaction())
+            //using (var tx = _db.BeginTransaction())
             {
                 try
                 {
@@ -51,11 +51,11 @@ namespace Leaderboard.Data
                         var id = InsertScore(dto.PlayerId, dto.PointsReceived, dto.GameId == 0 ? (int?)null : dto.GameId);
                         if (id > 0) inserted++;
                     }
-                    _db.CommitTransaction(tx);
+                    //_db.CommitTransaction(tx);
                 }
                 catch
                 {
-                    _db.RollbackTransaction(tx);
+                    //_db.RollbackTransaction(tx);
                     throw;
                 }
             }

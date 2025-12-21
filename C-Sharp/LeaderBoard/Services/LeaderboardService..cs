@@ -1,4 +1,7 @@
 ﻿// Services/LeaderboardService.cs
+
+//add repository layer usage instead of direct DatabaseHelper usage
+
 using Leaderboard.Data;
 using LeaderBoard.Data;
 using LeaderBoard.Models;

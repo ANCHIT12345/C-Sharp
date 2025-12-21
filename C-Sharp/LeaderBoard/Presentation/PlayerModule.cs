@@ -35,7 +35,6 @@ namespace LeaderBoard.Presentation
                                 pm.ListPlayer();
                                 break;
                             }
-                            break;
                         case "2":
                             {
                                 var ps = new PlayerService();

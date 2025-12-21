@@ -21,3 +21,5 @@ namespace Leaderboard.Services
         public List<Contest> GetActiveContests(DateTime now) => _repo.GetActiveContests(now);
     }
 }
+
+//validation missing for inputs in service methods

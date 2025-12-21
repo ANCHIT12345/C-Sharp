@@ -100,9 +100,9 @@ namespace LeaderBoard.Presentation
                 int count = repo.BulkInsertFromJsonFile(path);
 
                 // Recalculate leaderboard + ratings
-                repo.RecalculateGlobalLeaderboard();
-                repo.RecalculateContestLeaderboards();
-                repo.UpdatePlayerRatings();
+                //repo.RecalculateGlobalLeaderboard();
+                //repo.RecalculateContestLeaderboards();
+                //repo.UpdatePlayerRatings();
 
                 Console.WriteLine($"{count} scores imported and processed successfully.");
             }
