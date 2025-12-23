@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Threading & Concurrency in C#")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ca47942af9eab61ab413a80e51610fd9d4b940df")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+116b61acc07ec6ccf6f4b4ffd06031b07cf65a59")]
 [assembly: System.Reflection.AssemblyProductAttribute("Threading & Concurrency in C#")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Threading & Concurrency in C#")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

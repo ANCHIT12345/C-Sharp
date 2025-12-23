@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Threading & Concurrency in 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeaderBoard", "..\LeaderBoard\LeaderBoard.csproj", "{47C5013B-1CC6-4CE9-BC94-C4787D955CBA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeaderBoardSchedularService", "..\LeaderBoardSchedularService\LeaderBoardSchedularService.csproj", "{D71746EE-F496-421B-BD62-72822EB3A39F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{47C5013B-1CC6-4CE9-BC94-C4787D955CBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47C5013B-1CC6-4CE9-BC94-C4787D955CBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47C5013B-1CC6-4CE9-BC94-C4787D955CBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D71746EE-F496-421B-BD62-72822EB3A39F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D71746EE-F496-421B-BD62-72822EB3A39F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D71746EE-F496-421B-BD62-72822EB3A39F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D71746EE-F496-421B-BD62-72822EB3A39F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
