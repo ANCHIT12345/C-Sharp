@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\ConsoleApp 5\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{47C5013B-1CC6-4CE9-BC94-C4787D955CBA}|..\\LeaderBoard\\LeaderBoard.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\leaderboard\\services\\ileaderboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47C5013B-1CC6-4CE9-BC94-C4787D955CBA}|..\\LeaderBoard\\LeaderBoard.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\leaderboard\\services\\leaderboardservice..cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47C5013B-1CC6-4CE9-BC94-C4787D955CBA}|..\\LeaderBoard\\LeaderBoard.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\leaderboard\\data\\leaderboardrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47C5013B-1CC6-4CE9-BC94-C4787D955CBA}|..\\LeaderBoard\\LeaderBoard.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\leaderboard\\presentation\\leaderboardmodule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D71746EE-F496-421B-BD62-72822EB3A39F}|..\\LeaderBoardSchedularService\\LeaderBoardSchedularService.csproj|c:\\users\\anchit\\github\\console app\\c-sharp\\leaderboardschedularservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -13,11 +25,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LeaderboardModule.cs",
+              "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\LeaderBoard\\Presentation\\LeaderboardModule.cs",
+              "RelativeDocumentMoniker": "..\\LeaderBoard\\Presentation\\LeaderboardModule.cs",
+              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\LeaderBoard\\Presentation\\LeaderboardModule.cs",
+              "RelativeToolTip": "..\\LeaderBoard\\Presentation\\LeaderboardModule.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T17:10:10.877Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "ILeaderboardService.cs",
+              "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\LeaderBoard\\Services\\ILeaderboardService.cs",
+              "RelativeDocumentMoniker": "..\\LeaderBoard\\Services\\ILeaderboardService.cs",
+              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\LeaderBoard\\Services\\ILeaderboardService.cs",
+              "RelativeToolTip": "..\\LeaderBoard\\Services\\ILeaderboardService.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAYwBIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T17:09:46.64Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LeaderboardService..cs",
+              "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\LeaderBoard\\Services\\LeaderboardService..cs",
+              "RelativeDocumentMoniker": "..\\LeaderBoard\\Services\\LeaderboardService..cs",
+              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\LeaderBoard\\Services\\LeaderboardService..cs",
+              "RelativeToolTip": "..\\LeaderBoard\\Services\\LeaderboardService..cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAgwA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T17:07:12.404Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LeaderboardRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\LeaderBoard\\Data\\LeaderboardRepository.cs",
+              "RelativeDocumentMoniker": "..\\LeaderBoard\\Data\\LeaderboardRepository.cs",
+              "ToolTip": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\LeaderBoard\\Data\\LeaderboardRepository.cs",
+              "RelativeToolTip": "..\\LeaderBoard\\Data\\LeaderboardRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T17:07:37.704Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Anchit\\github\\Console app\\C-Sharp\\LeaderBoardSchedularService\\Program.cs",
               "RelativeDocumentMoniker": "..\\LeaderBoardSchedularService\\Program.cs",

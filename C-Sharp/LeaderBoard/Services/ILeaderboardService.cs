@@ -7,9 +7,9 @@ namespace Leaderboard.Services
 {
     public interface ILeaderboardService
     {
-
         List<ContestLeaderrBoard> GenerateLeaderboard(int contestId);
-        void DisplayLeaderboard(int contestId, List<ContestLeaderrBoard> rows = null);
+
+        void DisplayLeaderboard(int contestId);
 
         string ExportLeaderboardToCsv(int contestId, string directoryPath);
 
