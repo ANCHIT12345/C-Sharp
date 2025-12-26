@@ -3,9 +3,9 @@ using LeaderBoard.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Text;
-using System.Globalization;
 
 namespace Leaderboard.Data
 {
@@ -13,53 +13,51 @@ namespace Leaderboard.Data
     {
         private readonly IRepository _repo;
 
-        public LeaderboardRepository(IRepository repository)
+        public LeaderboardRepository(IRepository repo)
         {
-            _repo = repository;
+            _repo = repo;
         }
+
         public List<ContestLeaderrBoard> GenerateContestLeaderboard(int contestId)
         {
             const string sql = @"
-                WITH Ranked AS (
-                    SELECT PlayerID,
-                           SUM(Score) AS TotalPoints,
-                           DENSE_RANK() OVER (ORDER BY SUM(Score) DESC) AS RankVal
-                    FROM PlayerScore
-                    WHERE GameID = @ContestId
-                    GROUP BY PlayerID
-                )
-                SELECT PlayerID, @ContestId AS ContestID, TotalPoints, RankVal
-                FROM Ranked
-                ORDER BY RankVal;
+                SELECT 
+                    ps.PlayerID,
+                    SUM(ps.Score) AS TotalPoints
+                FROM PlayerScore ps
+                WHERE ps.GameID = @ContestId
+                GROUP BY ps.PlayerID
+                ORDER BY TotalPoints DESC;
             ";
 
-            var list = new List<ContestLeaderrBoard>();
+            var result = new List<ContestLeaderrBoard>();
 
-            using (var rdr = _repo.ExecuteReader(sql, new { ContestId = contestId }))
+            using (var reader = _repo.ExecuteReader(sql, new { ContestId = contestId }))
             {
-                while (rdr.Read())
+                int rank = 1;
+                while (reader.Read())
                 {
-                    list.Add(new ContestLeaderrBoard
+                    result.Add(new ContestLeaderrBoard
                     {
-                        PlayerID = rdr.GetInt32(0),
-                        ContestID = rdr.GetInt32(1),
-                        TotalPoints = rdr.GetDecimal(2),
-                        Rank = rdr.GetInt32(3)
+                        PlayerID = reader.GetInt32(0),
+                        ContestID = contestId,
+                        TotalPoints = reader.GetDecimal(1),
+                        Rank = rank++
                     });
                 }
             }
 
-            return list;
+            return result;
         }
 
         public void SaveContestLeaderboard(List<ContestLeaderrBoard> rows, IDbTransaction tx)
         {
-            foreach (var r in rows)
+            foreach (var row in rows)
             {
                 const string sql = @"
-                    MERGE ContestLeaderBoard AS t
-                    USING (SELECT @PlayerID AS PlayerID, @ContestID AS ContestID) s
-                    ON t.PlayerID = s.PlayerID AND t.ContestID = s.ContestID
+                    MERGE ContestLeaderBoard AS target
+                    USING (SELECT @PlayerID AS PlayerID, @ContestID AS ContestID) src
+                    ON target.PlayerID = src.PlayerID AND target.ContestID = src.ContestID
                     WHEN MATCHED THEN
                         UPDATE SET TotalPoints = @TotalPoints, Rank = @Rank
                     WHEN NOT MATCHED THEN
@@ -69,13 +67,14 @@ namespace Leaderboard.Data
 
                 _repo.ExecuteNonQuery(sql, new
                 {
-                    r.PlayerID,
-                    r.ContestID,
-                    r.TotalPoints,
-                    r.Rank
+                    row.PlayerID,
+                    row.ContestID,
+                    row.TotalPoints,
+                    row.Rank
                 });
             }
         }
+
         public void UpdateGlobalLeaderboard(IDbTransaction tx)
         {
             const string sql = @"
@@ -86,50 +85,90 @@ namespace Leaderboard.Data
                     FROM PlayerScore
                     GROUP BY PlayerID
                 )
-                MERGE GlobalLeaderBoard AS t
-                USING Ranked AS s
-                ON t.PlayerID = s.PlayerID
+                MERGE GlobalLeaderBoard AS tgt
+                USING Ranked src
+                ON tgt.PlayerID = src.PlayerID
                 WHEN MATCHED THEN
-                    UPDATE SET TotalPoints = s.TotalPoints, Rank = s.RankVal
+                    UPDATE SET TotalPoints = src.TotalPoints, Rank = src.RankVal
                 WHEN NOT MATCHED THEN
                     INSERT (PlayerID, TotalPoints, Rank)
-                    VALUES (s.PlayerID, s.TotalPoints, s.RankVal);
+                    VALUES (src.PlayerID, src.TotalPoints, src.RankVal);
             ";
 
             _repo.ExecuteNonQuery(sql);
         }
 
-        public string ExportContestLeaderboard(int contestId, List<ContestLeaderrBoard> rows, string directory)
+        public void ClearContestLeaderboard(int contestId)
         {
-            if (!Directory.Exists(directory))
-                Directory.CreateDirectory(directory);
-
-            var path = Path.Combine(
-                directory,
-                $"Leaderboard_{contestId}_{DateTime.UtcNow:yyyyMMddHHmmss}.csv"
+            _repo.ExecuteNonQuery(
+                "DELETE FROM ContestLeaderBoard WHERE ContestID = @ContestId",
+                new { ContestId = contestId }
             );
+        }
 
-            using (var sw = new StreamWriter(path, false, Encoding.UTF8))
+        public void ClearGlobalLeaderboard()
+        {
+            _repo.ExecuteNonQuery("DELETE FROM GlobalLeaderBoard");
+        }
+        public List<int> GetActiveContestIds()
+        {
+            const string sql = @"
+        SELECT Contest_ID
+        FROM Contest
+        WHERE ContestStartDate <= @Now
+          AND ContestEndDate >= @Now;
+    ";
+
+            var result = new List<int>();
+
+            using (var reader = _repo.ExecuteReader(sql, new { Now = DateTime.UtcNow }))
             {
-                sw.WriteLine("Rank,PlayerID,TotalPoints");
-                foreach (var r in rows)
-                    sw.WriteLine($"{r.Rank},{r.PlayerID},{r.TotalPoints.ToString(CultureInfo.InvariantCulture)}");
+                while (reader.Read())
+                {
+                    result.Add(reader.GetInt32(0));
+                }
             }
 
-            const string logSql = @"
-                INSERT INTO LeaderboardExportHistory
-                (ContestID, FileLocation, ExportedAt)
-                VALUES (@ContestID, @Path, @Now);
-            ";
+            return result;
+        }
+        public string ExportContestLeaderboard(
+    int contestId,
+    List<ContestLeaderrBoard> rows,
+    string directoryPath)
+        {
+            if (!Directory.Exists(directoryPath))
+                Directory.CreateDirectory(directoryPath);
 
-            _repo.ExecuteNonQuery(logSql, new
+            var filePath = Path.Combine(
+                directoryPath,
+                $"Leaderboard_Contest_{contestId}_{DateTime.UtcNow:yyyyMMdd_HHmmss}.csv"
+            );
+
+            using (var writer = new StreamWriter(filePath, false, Encoding.UTF8))
+            {
+                writer.WriteLine("Rank,PlayerID,TotalPoints");
+
+                foreach (var row in rows)
+                {
+                    writer.WriteLine($"{row.Rank},{row.PlayerID},{row.TotalPoints}");
+                }
+            }
+
+            const string sql = @"
+        INSERT INTO LeaderboardExportHistory
+        (ContestID, FileLocation, ExportedAt)
+        VALUES (@ContestID, @FileLocation, @ExportedAt);
+    ";
+
+            _repo.ExecuteNonQuery(sql, new
             {
                 ContestID = contestId,
-                Path = path,
-                Now = DateTime.UtcNow
+                FileLocation = filePath,
+                ExportedAt = DateTime.UtcNow
             });
 
-            return path;
+            return filePath;
         }
+
     }
 }

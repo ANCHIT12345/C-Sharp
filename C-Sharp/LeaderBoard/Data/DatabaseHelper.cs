@@ -12,6 +12,8 @@ namespace LeaderBoard.Data
     {
         private readonly string _connectionString;
         private SqlConnection _connection;
+        private IDbTransaction _currentTransaction;
+
 
         public IDbConnection Connection
         {
@@ -27,7 +29,7 @@ namespace LeaderBoard.Data
             }
         }
 
-        IDbConnection IRepository.Connection => throw new NotImplementedException();
+        //IDbConnection IRepository.Connection => throw new NotImplementedException();
 
         public DatabaseHelper()
         {
@@ -62,81 +64,115 @@ namespace LeaderBoard.Data
                 return (T)Convert.ChangeType(result, typeof(T));
             }
         }
-        public IDataReader ExecuteReader(string sql, object parameters = null, Func<object, Models.User> value = null)
+        public IDataReader ExecuteReader(string sql, object parameters = null)
         {
             var cmd = CreateCommand(sql, parameters);
             return cmd.ExecuteReader(CommandBehavior.CloseConnection);
         }
+
         private SqlCommand CreateCommand(string sql, object parameters)
         {
             var cmd = (SqlCommand)Connection.CreateCommand();
             cmd.CommandText = sql;
             cmd.CommandType = CommandType.Text;
-            cmd.CommandTimeout = 60;
+
+            if (_currentTransaction != null)
+                cmd.Transaction = (SqlTransaction)_currentTransaction;
+
             if (parameters != null)
             {
                 foreach (var prop in parameters.GetType().GetProperties())
                 {
-                    var name = "@" + prop.Name;
-                    var value = prop.GetValue(parameters) ?? DBNull.Value;
-                    cmd.Parameters.AddWithValue(name, value);
+                    cmd.Parameters.AddWithValue("@" + prop.Name,
+                        prop.GetValue(parameters) ?? DBNull.Value);
                 }
             }
+
             return cmd;
         }
+
+
         public IDbTransaction BeginTransaction()
         {
-            return Connection.BeginTransaction();
+            if (_currentTransaction != null)
+                return _currentTransaction;
+
+            _currentTransaction = Connection.BeginTransaction();
+            return _currentTransaction;
         }
+
+
         public void CommitTransaction(IDbTransaction tx)
         {
-            tx?.Commit();
-            tx?.Dispose();
+            if (tx == null) return;
+
+            if (tx.Connection != null)
+            {
+                tx.Commit();
+            }
+
+            _currentTransaction = null;
         }
+
         public void RollbackTransaction(IDbTransaction tx)
         {
-            try { tx?.Rollback(); } catch { }
-            tx?.Dispose();
+            try
+            {
+                if (tx?.Connection != null)
+                    tx.Rollback();
+            }
+            catch
+            {
+            }
+            finally
+            {
+                _currentTransaction = null;
+            }
         }
+
+
+
+        IDbConnection IRepository.Connection => this.Connection;
 
         bool IRepository.ExecuteInsert(string sql, object parameters)
         {
-            throw new NotImplementedException();
+            return ExecuteInsert(sql, parameters);
         }
 
         int IRepository.ExecuteNonQuery(string sql, object parameters)
         {
-            throw new NotImplementedException();
+            return ExecuteNonQuery(sql, parameters);
         }
 
         T IRepository.ExecuteScalar<T>(string sql, object parameters)
         {
-            throw new NotImplementedException();
+            return ExecuteScalar<T>(sql, parameters);
         }
 
         IDataReader IRepository.ExecuteReader(string sql, object parameters)
         {
-            throw new NotImplementedException();
+            return ExecuteReader(sql, parameters);
         }
 
         IDbTransaction IRepository.BeginTransaction()
         {
-            throw new NotImplementedException();
+            return BeginTransaction();
         }
 
         void IRepository.CommitTransaction(IDbTransaction tx)
         {
-            throw new NotImplementedException();
+            CommitTransaction(tx);
         }
 
         void IRepository.RollbackTransaction(IDbTransaction tx)
         {
-            throw new NotImplementedException();
+            RollbackTransaction(tx);
         }
 
         void IDisposable.Dispose()
         {
-            throw new NotImplementedException();
+            Dispose();
         }
+
     }
 }

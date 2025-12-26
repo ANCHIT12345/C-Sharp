@@ -22,13 +22,16 @@ namespace Leaderboard.Services
         public List<ContestLeaderrBoard> GenerateLeaderboard(int contestId)
         {
             if (contestId <= 0)
-                throw new ArgumentException(nameof(contestId));
+                throw new ArgumentException("Invalid contest id");
 
             using (var tx = _repo.BeginTransaction())
             {
                 try
                 {
+                    _leaderboardRepo.ClearContestLeaderboard(contestId);
+
                     var rows = _leaderboardRepo.GenerateContestLeaderboard(contestId);
+
                     _leaderboardRepo.SaveContestLeaderboard(rows, tx);
                     _leaderboardRepo.UpdateGlobalLeaderboard(tx);
 
@@ -48,30 +51,63 @@ namespace Leaderboard.Services
             var rows = GenerateLeaderboard(contestId);
 
             Console.WriteLine($"Leaderboard for Contest {contestId}");
-            Console.WriteLine("Rank | PlayerID | Points");
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine("Rank | PlayerID | Total Points");
 
-            foreach (var r in rows)
-                Console.WriteLine($"{r.Rank,4} | {r.PlayerID,8} | {r.TotalPoints,10:N2}");
+            foreach (var row in rows)
+            {
+                Console.WriteLine($"{row.Rank,4} | {row.PlayerID,8} | {row.TotalPoints,12}");
+            }
         }
 
-        public string ExportLeaderboardToCsv(int contestId, string directory)
+        public string ExportLeaderboardToCsv(int contestId, string directoryPath)
         {
             var rows = GenerateLeaderboard(contestId);
-            return _leaderboardRepo.ExportContestLeaderboard(contestId, rows, directory);
+
+            return _leaderboardRepo.ExportContestLeaderboard(
+                contestId,
+                rows,
+                directoryPath
+            );
         }
 
-        public async Task PeriodicRefreshAsync(int seconds, CancellationToken token)
+        public async Task PeriodicRefreshAsync(int intervalSeconds, CancellationToken cancellationToken)
         {
-            while (!token.IsCancellationRequested)
+            if (intervalSeconds <= 0)
+                throw new ArgumentException("Interval must be greater than zero.");
+
+            while (!cancellationToken.IsCancellationRequested)
             {
                 try
                 {
-                    // fetch active contests elsewhere
-                }
-                catch { }
+                    var activeContests = _leaderboardRepo.GetActiveContestIds();
 
-                await Task.Delay(TimeSpan.FromSeconds(seconds), token);
+                    if (activeContests.Count == 0)
+                    {
+                        Console.WriteLine("[Scheduler] No active contests found.");
+                    }
+
+                    foreach (var contestId in activeContests)
+                    {
+                        try
+                        {
+                            Console.WriteLine($"[Scheduler] Updating leaderboard for Contest {contestId}");
+                            GenerateLeaderboard(contestId);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"[ERROR] Contest {contestId}: {ex.Message}");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"[Scheduler ERROR] {ex.Message}");
+                }
+
+                await Task.Delay(TimeSpan.FromSeconds(intervalSeconds), cancellationToken);
             }
         }
+
     }
 }
