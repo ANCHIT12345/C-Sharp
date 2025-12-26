@@ -40,6 +40,12 @@ namespace LeaderBoard.Presentation
                         break;
                 }
             }
+
+        }
+        private void Pause()
+        {
+            Console.WriteLine("Press Enter to continue...");
+            Console.ReadLine();
         }
     }
 }

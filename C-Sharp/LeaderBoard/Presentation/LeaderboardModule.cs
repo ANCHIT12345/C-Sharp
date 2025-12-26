@@ -21,8 +21,9 @@ namespace LeaderBoard.Presentation
             _ratingService = new RatingService();
         }
 
-        public void ManageLeaderboard()
+        public static void ManageLeaderboard()
         {
+            LeaderboardModule module = new LeaderboardModule();
             while (true)
             {
                 Console.Clear();
@@ -40,23 +41,24 @@ namespace LeaderBoard.Presentation
                 switch (c)
                 {
                     case "1":
-                        GenerateAndDisplay();
+
+                        module.GenerateAndDisplay();
                         break;
 
                     case "2":
-                        Export();
+                        module.Export();
                         break;
 
                     case "3":
-                        GenerateAndUpdateRatings();
+                        module.GenerateAndUpdateRatings();
                         break;
 
                     case "4":
-                        StartPeriodicRefresh();
+                        module.StartPeriodicRefresh();
                         break;
 
                     case "5":
-                        StopPeriodicRefresh();
+                        module.StopPeriodicRefresh();
                         break;
 
                     case "6":

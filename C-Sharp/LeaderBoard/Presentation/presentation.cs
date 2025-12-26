@@ -22,7 +22,7 @@ namespace LeaderBoard.Presentation
                 Console.WriteLine("2. Manage Players");
                 Console.WriteLine("3. Manage Contests");
                 Console.WriteLine("4. Manage Leaderboard");
-                Console.WriteLine("5. Submit Score (Manual)");
+                Console.WriteLine("5. Submit Score (Manual/Json Import)");
                 //Console.WriteLine("5. Simulate Player Scores (Multi-threaded)");
                 //Console.WriteLine("6. Generate Leaderboard");
                 //Console.WriteLine("7. Export Leaderboard to CSV");
@@ -41,7 +41,7 @@ namespace LeaderBoard.Presentation
                         ContestModule.ManageContests();
                         break;
                     case "4":
-                        LeaderboardModule.ManageLeaderbord();
+                        LeaderboardModule.ManageLeaderboard();
                         break;
                     case "5":
                         var scoreModule = new ScoreModule();

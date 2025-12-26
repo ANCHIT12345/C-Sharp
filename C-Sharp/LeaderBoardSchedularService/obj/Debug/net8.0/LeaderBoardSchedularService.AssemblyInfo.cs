@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LeaderBoardSchedularService")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+116b61acc07ec6ccf6f4b4ffd06031b07cf65a59")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+da9ee83d2a15a42593dc093a0edfddbe6c9af8e3")]
 [assembly: System.Reflection.AssemblyProductAttribute("LeaderBoardSchedularService")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LeaderBoardSchedularService")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
