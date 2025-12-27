@@ -10,7 +10,6 @@
 //2. Use Case diagram
 //3. Activity diagram
 
-
 using System;
 using System.Threading;
 using Leaderboard.Data;
@@ -24,7 +23,6 @@ namespace LeaderBoardSchedulerService
         {
             Console.Title = "Leaderboard Scheduler Service";
 
-            // Dependency setup
             var db = new DatabaseHelper();
             var leaderboardRepo = new LeaderboardRepository(db);
             var scheduler = new LeaderboardSchedulerService(leaderboardRepo);
